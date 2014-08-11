@@ -16,6 +16,10 @@ group :development, :test do
 	gem 'factory_girl_rails', '4.2.0'
 end
 
+# Use Devise for authentication, omniauth for logins
+gem 'devise'
+gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

@@ -1,0 +1,16 @@
+<% provide(:title, 'Home') %>
+<div class="row">
+	<div class="small-12 large-centered columns text-center">
+		<%= image_tag("merl.png") %>
+	</div>
+	<div class="small-12 large-centered">
+	<p>The Maryland Entrepreneurs Resource List is a listing of entrepreneurs who are available in the Maryland area in the next 12 months to get involved with a start-up company. The List can be used by innovators who need an entrepreneur to commercialize their technology or by university and federal laboratory technology transfer professionals who want to identify management for a start-up opportunity being developed at their institution. The List also can provide entrepreneurs their next start-up opportunity or a chance to network with and mentor other entrepreneurs.</p>
+	</div>
+	<div class="small-7 large-centered columns text-center">
+		<ul class="button-group even-3">
+			<li><%= link_to "Join MERL", "omniauth_authorize_path(resource_name, :linkedin)", class: "button secondary" %></li>
+			<li><a class="button disabled">Or</a></li>
+			<li><%= link_to "View the List", "#", class: "button secondary" %></li>
+		</ul>
+	</div>
+</div>
