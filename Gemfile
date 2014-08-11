@@ -20,6 +20,9 @@ end
 gem 'devise'
 gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
 
+# Use HHTParty for hilarity and http requests/responses
+gem 'httparty'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
