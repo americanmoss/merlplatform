@@ -9,7 +9,7 @@ class OmniauthCallbacksControllerController < Devise::OmniauthCallbacksControlle
     		@user.save_linkedin_token(response['access_token'])
 
 		if @user.persisted?
-			sign_in_and_redirect current_user, :event => :authentication
+			sign_in_and_redirect root_url, :event => :authentication
 		else
 			session["devise.linkedin"] = request.env["omniauth.auth"]
 			redirect_to root_url
