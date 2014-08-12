@@ -1,5 +1,6 @@
 Merlplatform::Application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  # match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   get "static_pages/home"
   get "static_pages/help"
   root to: "static_pages#home"

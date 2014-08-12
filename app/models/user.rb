@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 		:recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:linkedin]
 
-
 	def from_omniauth(auth)
 		where(auth.slice(:provider, :uid)).first_or_create do |user|
 			user.provider = auth.provider
@@ -15,12 +14,8 @@ class User < ActiveRecord::Base
 		end
 	end
 
-
 	 def save_linkedin_token(token)
 		self.linkedin_token = token
 		self.save
 	end
-
-
-
 end
