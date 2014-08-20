@@ -1,0 +1,35 @@
+<% provide(:title, @profile.name) %>
+<div class="row">
+	<div class="small-12 large-centered columns">
+		<div class="large-2 columns text-center">
+			<%= image_tag(@profile.linkedin_image_url, class: 'profile-picture') %>
+		</div>
+		<div class="push-1 large-9 columns">
+			<h2><%= @profile.name %></h2>
+			<h4><%= @profile.headline %></h4>
+			<h4><%= @profile.industry %></h4>
+		</div>
+	</div>
+	<%
+=begin %>
+		<div class="large-4 columns">
+			<h4>Personal Information</h4>
+			<ul class="vcard text-left">
+				<li class="fn"><%= @profile.name %></li>
+				
+				<% unless @profile.organization.blank? %>
+					<li><%= @profile.organization %></li>
+				<% end %>
+				<% unless @profile.phone.blank? %>
+					<li><%= @profile.phone %></li>
+				<% end %>
+				<li><%= mail_to @profile.email %></li>
+				<% unless @profile.bio.blank? %>
+					<li><%= link_to "Biography", @profile.bio, :target => "_blank" %></li>
+				<% end %>
+			</ul>
+
+		</div>
+					<%
+=end %>
+</div>

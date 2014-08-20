@@ -1,0 +1,23 @@
+<nav class="top-bar" data-topbar>
+	<section class="top-bar-section">
+		<ul class="left">
+			<li class="<%= 'active' if current_page?(root_path) %>" ><%= link_to "Home", root_path %></li>
+		</ul>
+
+		<ul class="right">
+			<% if signed_in? %>
+				<li class="has-dropdown">
+				<%= link_to "Account", "#" %>
+					<ul class="dropdown">
+						<li><%= link_to "Profile", current_user %></li>
+						<li><%= link_to "Settings", '#' %></li>
+						<li class="divider"></li>
+						<li><%= link_to "Sign Out", '#' %></li>
+					</ul>
+				</li>
+			<% else %>
+				<li><%= link_to "Sign in", '#' %></li>
+			<% end %>
+		</ul>
+	</section>
+</nav>

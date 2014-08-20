@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Merlplatform</title>
+	<title>MERL Platform</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<%# Modernizr is required for Zurb Foundation %>
+	<%= javascript_include_tag 'vendor/modernizr' %>
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+		<script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+		<script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+	<![endif]-->
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	
-	<%= yield %>
+	<%= render 'layouts/header' %>
+	<section class="main-section">
+		<% flash.each do |key, value| %>
+					<div class="alert-box <%= key %>"><%= value %></div>
+				<% end %>
+		<%= yield %>
+	</section>
 </body>
 </html>

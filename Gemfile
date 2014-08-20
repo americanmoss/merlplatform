@@ -18,7 +18,8 @@ end
 
 # Use Devise for authentication, omniauth for logins
 gem 'devise'
-gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
+gem 'omniauth-linkedin-oauth2'
+gem "linkedin-oauth2", "~> 1.0"
 
 # Use HHTParty for hilarity and http requests/responses
 gem 'httparty'
@@ -28,6 +29,9 @@ gem 'sass-rails', '~> 4.0.2'
 
 # Use Foundation as frontend framework
 gem 'foundation-rails'
+
+# Use friendly-id for slugged URL displays
+gem 'friendly_id', '~> 5.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '2.1.1'
@@ -43,6 +47,8 @@ gem 'jquery-rails', '3.0.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '1.1.1'
+# Fixes issues with turbolinks
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '1.0.2'
