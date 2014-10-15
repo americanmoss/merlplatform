@@ -18,7 +18,7 @@ end
 
 # Use Devise for authentication, omniauth for logins
 gem 'devise'
-gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-linkedin-oauth2', '~> 0.1.5'
 gem "linkedin-oauth2", "~> 1.0"
 
 # Use HHTParty for hilarity and http requests/responses

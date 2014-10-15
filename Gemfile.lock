@@ -188,7 +188,7 @@ DEPENDENCIES
   jquery-rails (= 3.0.4)
   jquery-turbolinks
   linkedin-oauth2 (~> 1.0)
-  omniauth-linkedin-oauth2
+  omniauth-linkedin-oauth2 (~> 0.1.5)
   pg (= 0.15.1)
   rails (= 4.0.5)
   rails_12factor (= 0.0.2)

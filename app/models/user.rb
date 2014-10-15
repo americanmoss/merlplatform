@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	friendly_id :name, use: :slugged
 
 	has_many :positions
+	has_many :educations
+	has_many :skills
 
 	def self.from_omniauth(auth)
 		where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -38,7 +40,8 @@ class User < ActiveRecord::Base
 		api = LinkedIn::API.new(linkedin_token)
 		self.linkedin_image_url = api.picture_urls.all.first
 
-		api.profile(fields:[{positions: ['title', 'summary', 'is_current', 'start_date', 'end_date', 'company']}]).to_hash['positions']['all'].each do |position|
+		# Positions
+		api.profile(fields:[{positions: ['id', 'title', 'summary', 'is_current', 'start_date', 'end_date', 'company']}]).to_hash['positions']['all'].each do |position|
 			
 			new_position = Position.find_or_create_by(linkedin_position_id: position['id']) do |user_position|
 			           user_position.title = position['title']
@@ -51,13 +54,43 @@ class User < ActiveRecord::Base
 			           user_position.company_id = position['company']['id']
 			           user_position.industry = position['company']['industry']
 
-			           company_api = api.company(id: position['company']['id'], fields:['website_url', 'logo_url', 'square_logo_url']).to_hash
-				user_position.company_url = company_api['website_url']
-				user_position.company_logo_url = company_api['logo_url']
-				user_position.company_square_logo_url = company_api['square_logo_url']
+			           if  position['company']['id']
+				           company_api = api.company(id: position['company']['id'], fields:['website_url', 'logo_url', 'square_logo_url']).to_hash
+					user_position.company_url = company_api['website_url']
+					user_position.company_logo_url = company_api['logo_url']
+					user_position.company_square_logo_url = company_api['square_logo_url']
+				end
 			end
 			self.positions << new_position
           			self.save
 		end
+
+		# Educations
+		api.profile(fields:[{educations: ['id', 'school_name', 'field_of_study', 'degree', 'start_date', 'end_date']}]).to_hash['educations']['all'].each do |education|
+
+			new_education = Education.find_or_create_by(linkedin_education_id: education['id']) do |user_education|
+				user_education.school_name = education['school_name']
+				user_education.field_of_study = education['field_of_study']
+				user_education.degree = education['degree']
+				user_education.start_date = education['start_date']
+				user_education.end_date = education['end_date']
+			end
+			
+			self.educations << new_education
+			self.save
+		end
+
+		# Skills 
+		api.profile(fields:[{skills: ['skill']}]).to_hash['skills']['all'].each do |skill|
+			new_skill = Skill.find_or_create_by( skill: skill['skill']['name'])
+			self.skills << new_skill
+			self.save
+		end
+
+	end
+
+	def linkedin_client
+		@client ||= LinkedIn::Client.new(ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"])
+		block_given? ? yield(@client) : @client
 	end
 end

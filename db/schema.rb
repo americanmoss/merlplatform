@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815172513) do
+ActiveRecord::Schema.define(version: 20141009165430) do
+
+  create_table "educations", force: true do |t|
+    t.string   "school_name"
+    t.string   "degree"
+    t.string   "field_of_study"
+    t.integer  "linkedin_education_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "positions", force: true do |t|
     t.string   "name"
@@ -29,6 +41,11 @@ ActiveRecord::Schema.define(version: 20140815172513) do
     t.integer  "user_id"
     t.string   "company_url"
     t.string   "company_square_logo_url"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string  "skill"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|

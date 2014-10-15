@@ -10,26 +10,40 @@
 			<h4><%= @profile.industry %></h4>
 		</div>
 	</div>
-	<%
-=begin %>
-		<div class="large-4 columns">
-			<h4>Personal Information</h4>
-			<ul class="vcard text-left">
-				<li class="fn"><%= @profile.name %></li>
-				
-				<% unless @profile.organization.blank? %>
-					<li><%= @profile.organization %></li>
+</div>
+
+<div class="row">
+	<div class="small-12 large-centered columns">
+		<div class="large-6 columns">
+			<div class="row">
+				<% @profile.positions.each do |p| %>
+				<div class="large-2 columns">
+					<img src="<%= p.company_square_logo_url %>">
+				</div>
+				<div class="large-10 columns">
+					<h5><%= p.name %></h5>
+					<h5><%= p.title %></h5>
+					<p><%= p.summary %></p>
+				</div>
 				<% end %>
-				<% unless @profile.phone.blank? %>
-					<li><%= @profile.phone %></li>
+			</div>
+		</div>
+		<div class="large-6 columns">
+			<div class="row">
+				<% @profile.educations.each do |e| %>
+				<div class="large-2 columns">
+					<img src="<%=  %>">
+				</div>
+				<div class="large-10 columns">
+					<h5><%= e.school_name %></h5>
+					<h5><%= e.degree %></h5>
+					<p><%= e.field_of_study %></p>
+				</div>
 				<% end %>
-				<li><%= mail_to @profile.email %></li>
-				<% unless @profile.bio.blank? %>
-					<li><%= link_to "Biography", @profile.bio, :target => "_blank" %></li>
-				<% end %>
-			</ul>
+			</div>
+		</div>
+		<div class="large-6 columns">
 
 		</div>
-					<%
-=end %>
+	</div>
 </div>
