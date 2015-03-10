@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009165430) do
+ActiveRecord::Schema.define(version: 20141205194551) do
+
+  create_table "connections", force: true do |t|
+    t.integer  "mentee_id"
+    t.integer  "mentor_id"
+    t.text     "introduction"
+    t.boolean  "accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "connections", ["mentee_id", "mentor_id"], name: "index_connections_on_mentee_id_and_mentor_id", unique: true
+  add_index "connections", ["mentee_id"], name: "index_connections_on_mentee_id"
+  add_index "connections", ["mentor_id"], name: "index_connections_on_mentor_id"
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -42,6 +55,21 @@ ActiveRecord::Schema.define(version: 20141009165430) do
     t.string   "company_url"
     t.string   "company_square_logo_url"
   end
+
+  create_table "qualifications", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "qualifications_users", id: false, force: true do |t|
+    t.integer "user_id",          null: false
+    t.integer "qualification_id", null: false
+  end
+
+  add_index "qualifications_users", ["qualification_id", "user_id"], name: "index_qualifications_users_on_qualification_id_and_user_id"
+  add_index "qualifications_users", ["user_id", "qualification_id"], name: "index_qualifications_users_on_user_id_and_qualification_id"
 
   create_table "skills", force: true do |t|
     t.string  "skill"
@@ -74,10 +102,17 @@ ActiveRecord::Schema.define(version: 20141009165430) do
     t.string   "industry"
     t.string   "linkedin_profile_url"
     t.string   "linkedin_image_url"
+    t.text     "tokens"
+    t.string   "nickname"
+    t.string   "image"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["slug"], name: "index_users_on_slug"
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
 end
