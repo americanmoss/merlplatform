@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
 
 
-	def self.from_omniauth(auth)
+	def self.from_omniauth(auth ,params)
 		where(auth.slice(:provider, :uid)).first_or_create do |user|
 			user.provider = auth.provider
 			user.uid = auth.uid
@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
 			user.industry = auth.extra.raw_info.industry	
 			user.linkedin_image_url = auth.info.image
 			user.linkedin_profile_url = auth.extra.raw_info.publicProfileUrl
+			
+			# As written, this is sloppy; need to figure out why a string is being passed rather than an int, then correct that
+			user.user_type = params["user_type"].to_f if params
 		end
 	end
 

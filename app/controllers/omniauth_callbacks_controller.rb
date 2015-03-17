@@ -1,7 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 	def linkedin
-		@user = User.from_omniauth(request.env["omniauth.auth"])
+		@user = User.from_omniauth(request.env["omniauth.auth"], request.env["omniauth.params"])
 		temp_token = request.env["omniauth.auth"].credentials.token
 		access_token = OAuth2::AccessToken.new(linkedin_client, temp_token, {
 			:mode => :query,
@@ -9,6 +9,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		})
 
 		@user.save_linkedin_token(access_token.token)
+
+		if request.env["omniauth.params"]["user_type"] && !@user.user_type
+			@user.user_type = request.env["omniauth.params"]["user_type"]
+			@user.save
+		end
 
 		if @user.persisted?
 			sign_in_and_redirect @user, :event => :authentication

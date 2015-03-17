@@ -1,0 +1,24 @@
+<% provide(:title, 'Decide') %>
+<div class="row">
+  <div class="small-12 large-centered columns text-center">
+    <%= image_tag("merl.png") %>
+  </div>
+  <div class="small-12 large-centered">
+    <p>Please remember that MERL mentors have at least one or preferably more of the following criteria:
+      <ul>
+        <li>Raised money from sophisticated investors as a C-level executive</li>
+        <li>Participated in an exit of a company</li>
+        <li>Two years of start-up experience</li>
+        <li>5 years of executive experience in an industrial sector</li>
+        <li>5 years of business experience in a specific area such as regulatory affairs, product development, manufacturing, business development, or marketing and sales.</li>
+      </ul>
+    </p>
+  </div>
+  <div class="small-7 large-centered columns text-center">
+    <ul class="button-group even-3">
+      <li><%= link_to "Mentors", user_omniauth_authorize_path(:linkedin, user_type: 1), class: "button secondary" %></li>
+      <li><a class="button disabled">Or</a></li>
+      <li><%= link_to "Entrepreneurs", user_omniauth_authorize_path(:linkedin, user_type: 0), class: "button secondary" %></li>
+    </ul>
+  </div>
+</div>
