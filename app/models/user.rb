@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable 
+
 	devise :database_authenticatable, :registerable,
 		:recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:linkedin]
 
@@ -10,6 +9,24 @@ class User < ActiveRecord::Base
 	has_many :positions
 	has_many :educations
 	has_many :skills
+
+
+
+	enum user_type: {
+		entrepreneur: 0,
+		merl_member: 1,
+		ambassador: 2,
+		executive_exchange: 3
+	}
+
+	enum user_status: {
+		inactive: 0,
+		signup_finished: 1,
+		hidden: 2,
+		administrator: 3
+	}
+
+
 
 	def self.from_omniauth(auth)
 		where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -30,10 +47,6 @@ class User < ActiveRecord::Base
 	 def save_linkedin_token(token)
 		self.linkedin_token = token
 		self.save
-	end
-
-	def signup_finished?
-		!self.merl_member.nil? && self.signup_complete
 	end
 
 	def pull_linkedin_info

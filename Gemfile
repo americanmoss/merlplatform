@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.5'
+gem 'rails', '4.1.0'
 
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
@@ -25,10 +25,10 @@ gem "linkedin-oauth2", "~> 1.0"
 gem 'httparty'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails', '5.0.0'
 
 # Use Foundation as frontend framework
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.0'
 
 # Use friendly-id for slugged URL displays
 gem 'friendly_id', '~> 5.0.0'
