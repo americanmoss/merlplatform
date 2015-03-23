@@ -8,10 +8,11 @@ class UsersController < ApplicationController
 
 	def index
 		@user = current_user
-		@users = User.where(merl_member: true)
+		@users = User.where("user_type <> ?", User.user_types[:entrepreneur])
 	end
 
 
+	# Edit after successful implementation of Wicked
 	def finish_signup
 		if request.patch? && params[:user]
 			if @user.update(user_params)

@@ -25,6 +25,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 	end
 
+	# Remove after successful Wicked implementation
 	def after_sign_in_path_for(resource)
 		if resource.inactive?
 			finish_signup_path(resource)
@@ -41,6 +42,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			:authorize_url => "/uas/oauth2/authorization?response_type=code", #LinkedIn's authorization path
 			:token_url => "/uas/oauth2/accessToken", #LinkedIn's access token path
 			:site => "https://www.linkedin.com"
-    		)
+    	)
  	end
 end

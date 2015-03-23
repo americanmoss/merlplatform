@@ -24,11 +24,15 @@ gem "linkedin-oauth2", "~> 1.0"
 # Use HHTParty for hilarity and http requests/responses
 gem 'httparty'
 
-# Use SCSS for stylesheets
+# Use SCSS for stylesheets and Foundation as a frontend framework
 gem 'sass-rails', '5.0.0'
-
-# Use Foundation as frontend framework
 gem 'foundation-rails', '5.5.0'
+
+# Use Chosen to for better select boxes
+gem 'chosen-rails'
+
+# Use Wicked to build multi-step signup forms
+gem 'wicked'
 
 # Use friendly-id for slugged URL displays
 gem 'friendly_id', '~> 5.0.0'
@@ -45,8 +49,6 @@ gem 'coffee-rails', '~> 4.0.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '3.0.4'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '1.1.1'
 # Fixes issues with turbolinks
 gem 'jquery-turbolinks'
 

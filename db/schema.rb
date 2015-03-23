@@ -14,67 +14,67 @@
 ActiveRecord::Schema.define(version: 20150317191648) do
 
   create_table "educations", force: true do |t|
-    t.string   "school_name"
-    t.string   "degree"
-    t.string   "field_of_study"
-    t.integer  "linkedin_education_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
+	t.string   "school_name"
+	t.string   "degree"
+	t.string   "field_of_study"
+	t.integer  "linkedin_education_id"
+	t.datetime "start_date"
+	t.datetime "end_date"
+	t.datetime "created_at"
+	t.datetime "updated_at"
+	t.integer  "user_id"
   end
 
   create_table "positions", force: true do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.string   "industry"
-    t.string   "title"
-    t.text     "summary"
-    t.boolean  "is_current"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "company_logo_url"
-    t.integer  "linkedin_position_id"
-    t.integer  "user_id"
-    t.string   "company_url"
-    t.string   "company_square_logo_url"
+	t.string   "name"
+	t.integer  "company_id"
+	t.string   "industry"
+	t.string   "title"
+	t.text     "summary"
+	t.boolean  "is_current"
+	t.datetime "start_date"
+	t.datetime "end_date"
+	t.datetime "created_at"
+	t.datetime "updated_at"
+	t.string   "company_logo_url"
+	t.integer  "linkedin_position_id"
+	t.integer  "user_id"
+	t.string   "company_url"
+	t.string   "company_square_logo_url"
   end
 
   create_table "skills", force: true do |t|
-    t.string  "skill"
-    t.integer "user_id"
+	t.string  "skill"
+	t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "linkedin_token"
-    t.string   "slug"
-    t.boolean  "signup_complete",        default: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "headline"
-    t.string   "industry"
-    t.string   "linkedin_profile_url"
-    t.string   "linkedin_image_url"
-    t.integer  "user_type",              default: 0
-    t.integer  "user_status",            default: 0
+	t.string   "email",                  default: "",    null: false
+	t.string   "encrypted_password",     default: "",    null: false
+	t.string   "reset_password_token"
+	t.datetime "reset_password_sent_at"
+	t.datetime "remember_created_at"
+	t.integer  "sign_in_count",          default: 0,     null: false
+	t.datetime "current_sign_in_at"
+	t.datetime "last_sign_in_at"
+	t.string   "current_sign_in_ip"
+	t.string   "last_sign_in_ip"
+	t.datetime "created_at"
+	t.datetime "updated_at"
+	t.string   "name"
+	t.string   "provider"
+	t.string   "uid"
+	t.string   "linkedin_token"
+	t.string   "slug"
+	t.boolean  "signup_complete",        default: false
+	t.string   "first_name"
+	t.string   "last_name"
+	t.string   "headline"
+	t.string   "industry"
+	t.string   "linkedin_profile_url"
+	t.string   "linkedin_image_url"
+	t.integer  "user_type",              default: 0
+	t.integer  "user_status",            default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

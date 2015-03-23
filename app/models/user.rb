@@ -10,13 +10,11 @@ class User < ActiveRecord::Base
 	has_many :educations
 	has_many :skills
 
-
-
 	enum user_type: {
 		entrepreneur: 0,
 		merl_member: 1,
-		ambassador: 2,
-		executive_exchange: 3
+		merl_ambassador: 2,
+		merl_executive: 3
 	}
 
 	enum user_status: {
@@ -25,8 +23,6 @@ class User < ActiveRecord::Base
 		hidden: 2,
 		administrator: 3
 	}
-
-
 
 	def self.from_omniauth(auth ,params)
 		where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -41,8 +37,8 @@ class User < ActiveRecord::Base
 			user.industry = auth.extra.raw_info.industry	
 			user.linkedin_image_url = auth.info.image
 			user.linkedin_profile_url = auth.extra.raw_info.publicProfileUrl
-			
-			# As written, this is sloppy; need to figure out why a string is being passed rather than an int, then correct that
+
+			# Need to figure out if there is a way to pass this through as an integer, or if casting is necessary to deal with the fact that the parameter is pulled from the callback URL
 			user.user_type = params["user_type"].to_f if params
 		end
 	end
@@ -56,7 +52,12 @@ class User < ActiveRecord::Base
 		api = LinkedIn::API.new(linkedin_token)
 		self.linkedin_image_url = api.picture_urls.all.first
 
-		# Positions
+		self.pull_skills(api)
+		self.pull_skills(api)
+		self.pull_educations(api)
+	end
+
+	def pull_positions(api)
 		api.profile(fields:[{positions: ['id', 'title', 'summary', 'is_current', 'start_date', 'end_date', 'company']}]).to_hash['positions']['all'].each do |position|
 			
 			new_position = Position.find_or_create_by(linkedin_position_id: position['id']) do |user_position|
@@ -78,10 +79,19 @@ class User < ActiveRecord::Base
 				end
 			end
 			self.positions << new_position
-          			self.save
+          		self.save
 		end
+	end
 
-		# Educations
+	def pull_skills(api)
+		api.profile(fields:[{skills: ['skill']}]).to_hash['skills']['all'].each do |skill|
+			new_skill = Skill.find_or_create_by( skill: skill['skill']['name'])
+			self.skills << new_skill
+			self.save
+		end
+	end
+
+	def pull_educations(api)
 		api.profile(fields:[{educations: ['id', 'school_name', 'field_of_study', 'degree', 'start_date', 'end_date']}]).to_hash['educations']['all'].each do |education|
 
 			new_education = Education.find_or_create_by(linkedin_education_id: education['id']) do |user_education|
@@ -95,15 +105,9 @@ class User < ActiveRecord::Base
 			self.educations << new_education
 			self.save
 		end
-
-		# Skills 
-		api.profile(fields:[{skills: ['skill']}]).to_hash['skills']['all'].each do |skill|
-			new_skill = Skill.find_or_create_by( skill: skill['skill']['name'])
-			self.skills << new_skill
-			self.save
-		end
-
 	end
+
+	private
 
 	def linkedin_client
 		@client ||= LinkedIn::Client.new(ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"])
