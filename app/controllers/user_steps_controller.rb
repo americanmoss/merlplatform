@@ -29,7 +29,7 @@ class UserStepsController < ApplicationController
  private
 
  def user_params
-  params.require(:user).permit(:industry_id, skill_ids: [])
+  params.require(:user).permit(:purpose, :industry_id, skill_ids: [], commitment_ids: [], achievement_ids: [])
  end
 
 end

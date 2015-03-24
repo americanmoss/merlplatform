@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324205047) do
+ActiveRecord::Schema.define(version: 20150324215635) do
 
   create_table "achievements", force: true do |t|
     t.string   "name"
@@ -20,12 +20,28 @@ ActiveRecord::Schema.define(version: 20150324205047) do
     t.datetime "updated_at"
   end
 
+  create_table "achievements_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "achievement_id"
+  end
+
+  add_index "achievements_users", ["achievement_id"], name: "index_achievements_users_on_achievement_id"
+  add_index "achievements_users", ["user_id"], name: "index_achievements_users_on_user_id"
+
   create_table "commitments", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "commitments_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "commitment_id"
+  end
+
+  add_index "commitments_users", ["commitment_id"], name: "index_commitments_users_on_commitment_id"
+  add_index "commitments_users", ["user_id"], name: "index_commitments_users_on_user_id"
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -105,18 +121,11 @@ ActiveRecord::Schema.define(version: 20150324205047) do
     t.integer  "user_type",              default: 0
     t.integer  "user_status",            default: 0
     t.integer  "industry_id"
+    t.text     "purpose"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["slug"], name: "index_users_on_slug"
-
-  create_table "users_and_commitments", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "commitment_id"
-  end
-
-  add_index "users_and_commitments", ["commitment_id"], name: "index_users_and_commitments_on_commitment_id"
-  add_index "users_and_commitments", ["user_id"], name: "index_users_and_commitments_on_user_id"
 
 end

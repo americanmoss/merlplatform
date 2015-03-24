@@ -6,5 +6,11 @@ class CreateAchievements < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :achievements_users, id: false do |t|
+     t.belongs_to :user, index: true
+     t.belongs_to :achievement, index: true
+    end
+
   end
 end

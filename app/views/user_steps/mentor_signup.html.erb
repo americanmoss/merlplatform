@@ -2,22 +2,45 @@
 	<%= form_for @user, url: wizard_path do |f| %>
 		<h2>Complete your profile below</h2>
 		<p>This is how other MERL members and entrepreneurs will see your profile.</p>
+
+		<!-- Add in purpose -->
+
 		<div class="field">
 			<%= f.select :industry_id,
 				Industry.all.collect { |i| [i.name, i.id] },
 				{ include_blank: true },
 				{ class: 'chosen-select',
-				"data-placeholder" => 'Choose an Industry' }
+				"data-placeholder" => 'Select your industry' }
 			%>
 		</div>
 
 		<div class="field">
 			<%= f.collection_select :skill_ids, Skill.all, :id, :name, 
 				{ include_blank: true },
-				{ class: 'chosen-select',  "data-placeholder" => 'Choose your areas of expertise', multiple: true }
-				# { include_blank: false },
-				# {multiple: true}
-				# { :multiple=>true, class: 'chosen-select medium',  :data => { :placeholder => ' ' }}
+				{ class: 'chosen-select',  
+					"data-placeholder" => 'Tell us about your areas of expertise', 
+					multiple: true 
+				}
+			%>
+		</div>
+
+		<div class="field">
+			<%= f.collection_select :achievement_ids, Achievement.all, :id, :description, 
+				{ include_blank: true },
+				{ class: 'chosen-select',  
+					"data-placeholder" => 'Tell us how you qualify for MERL', 
+					multiple: true 
+				}
+			%>
+		</div>
+
+		<div class="field">
+			<%= f.collection_select :commitment_ids, Commitment.all, :id, :description, 
+				{ include_blank: true },
+				{ class: 'chosen-select',  
+					"data-placeholder" => 'Tell us about your level of commitment', 
+					multiple: true 
+				}
 			%>
 		</div>
 		

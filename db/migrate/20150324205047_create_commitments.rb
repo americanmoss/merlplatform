@@ -7,7 +7,7 @@ class CreateCommitments < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :users_and_commitments, id: false do |t|
+    create_table :commitments_users, id: false do |t|
      t.belongs_to :user, index: true
      t.belongs_to :commitment, index: true
     end

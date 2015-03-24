@@ -8,10 +8,11 @@ class User < ActiveRecord::Base
 
 	belongs_to :industry
 	has_and_belongs_to_many :skills
+	has_and_belongs_to_many :commitments
+	has_and_belongs_to_many :achievements
 
 	has_many :positions
 	has_many :educations
-	
 
 	enum user_type: {
 		entrepreneur: 0,
