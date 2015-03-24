@@ -19,7 +19,10 @@
 	<%= render 'layouts/header' %>
 	<section class="main-section">
 		<% flash.each do |key, value| %>
-					<div class="alert-box <%= key %>"><%= value %></div>
+					<div data-alert class="alert-box radius <%= key %>">
+						<%= value %>
+						<a href="#" class="close">&times;</a>
+					</div>
 				<% end %>
 		<%= yield %>
 	</section>

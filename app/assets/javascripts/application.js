@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require chosen-jquery
+//= require chosen
 //= require_tree .
 
 $(function() {
@@ -22,3 +23,6 @@ $(function() {
 
 	});
 });
+
+
+$(function(){ $(document).foundation(); });

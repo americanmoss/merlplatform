@@ -1,0 +1,30 @@
+<div class="large-6 large-centered columns">	
+	<%= form_for @user, url: wizard_path do |f| %>
+		<h2>Complete your profile below</h2>
+		<p>This is how other MERL members and entrepreneurs will see your profile.</p>
+		<div class="field">
+			<%= f.select :industry_id,
+				Industry.all.collect { |i| [i.name, i.id] },
+				{ include_blank: true },
+				{ class: 'chosen-select',
+				"data-placeholder" => 'Choose an Industry' }
+			%>
+		</div>
+
+		<div class="field">
+			<%= f.collection_select :skill_ids, Skill.all, :id, :name, 
+				{ include_blank: true },
+				{ class: 'chosen-select',  "data-placeholder" => 'Choose your areas of expertise', multiple: true }
+				# { include_blank: false },
+				# {multiple: true}
+				# { :multiple=>true, class: 'chosen-select medium',  :data => { :placeholder => ' ' }}
+			%>
+		</div>
+		
+		<div class="actions">
+			<%= f.submit "Continue",
+				{ class: 'button' }
+			%>
+		</div>
+	<% end %>	
+</div>

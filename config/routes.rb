@@ -1,12 +1,8 @@
 Merlplatform::Application.routes.draw do
   resources :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :user_steps
   resources :positions
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  
-  # Remove on completion of Wicked implementation
-  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-  
   get "decide" => 'static_pages#decide'
   root to: "static_pages#home"
 

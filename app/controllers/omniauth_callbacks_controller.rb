@@ -18,20 +18,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		if @user.persisted?
 			sign_in_and_redirect @user, :event => :authentication
 			@user.pull_linkedin_info
-			flash[:success] = "Welcome, #{@user.name}"
+			flash[:success] = "Welcome to MERL, #{@user.name}"
 		else
 			session["devise.linkedin"] = request.env["omniauth.auth"]
 			redirect_to root_url
 		end
 	end
 
-	# Remove after successful Wicked implementation
 	def after_sign_in_path_for(resource)
 		if resource.inactive?
-			finish_signup_path(resource)
+			user_steps_path(resource)
 		end
 	end
-
 
 	private
 

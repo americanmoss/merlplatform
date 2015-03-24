@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :name, use: :slugged
 
+	belongs_to :industry
+	has_and_belongs_to_many :skills
+
 	has_many :positions
 	has_many :educations
-	has_many :skills
+	
 
 	enum user_type: {
 		entrepreneur: 0,
@@ -34,7 +37,7 @@ class User < ActiveRecord::Base
 			user.first_name = auth.info.first_name
 			user.last_name = auth.info.last_name
 			user.headline = auth.info.description
-			user.industry = auth.extra.raw_info.industry	
+			user.linkedin_industry = auth.extra.raw_info.industry	
 			user.linkedin_image_url = auth.info.image
 			user.linkedin_profile_url = auth.extra.raw_info.publicProfileUrl
 
@@ -52,8 +55,10 @@ class User < ActiveRecord::Base
 		api = LinkedIn::API.new(linkedin_token)
 		self.linkedin_image_url = api.picture_urls.all.first
 
-		self.pull_skills(api)
-		self.pull_skills(api)
+		# Commented out for now, as may not be entirely necessary
+		# self.pull_skills(api)
+
+		self.pull_positions(api)
 		self.pull_educations(api)
 	end
 
@@ -61,25 +66,26 @@ class User < ActiveRecord::Base
 		api.profile(fields:[{positions: ['id', 'title', 'summary', 'is_current', 'start_date', 'end_date', 'company']}]).to_hash['positions']['all'].each do |position|
 			
 			new_position = Position.find_or_create_by(linkedin_position_id: position['id']) do |user_position|
-			           user_position.title = position['title']
-			           user_position.summary = position['summary']
-			           user_position.is_current = position['is_current']
-			           user_position.start_date = position['start_date']
-			           user_position.end_date = position['end_date']
+	         user_position.title = position['title']
+	         user_position.summary = position['summary']
+	         user_position.is_current = position['is_current']
+	         user_position.start_date = position['start_date']
+	         user_position.end_date = position['end_date']
 
-			           user_position.name = position['company']['name']
-			           user_position.company_id = position['company']['id']
-			           user_position.industry = position['company']['industry']
+	         user_position.name = position['company']['name']
+	         user_position.company_id = position['company']['id']
+	         user_position.industry = position['company']['industry']
 
-			           if  position['company']['id']
-				           company_api = api.company(id: position['company']['id'], fields:['website_url', 'logo_url', 'square_logo_url']).to_hash
+	         if  position['company']['id']
+					company_api = api.company(id: position['company']['id'], fields:['website_url', 'logo_url', 'square_logo_url']).to_hash
 					user_position.company_url = company_api['website_url']
 					user_position.company_logo_url = company_api['logo_url']
 					user_position.company_square_logo_url = company_api['square_logo_url']
 				end
 			end
+
 			self.positions << new_position
-          		self.save
+			self.save
 		end
 	end
 
