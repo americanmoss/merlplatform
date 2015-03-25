@@ -4,6 +4,9 @@ Merlplatform::Application.routes.draw do
   resources :user_steps
   resources :positions
   get "decide" => 'static_pages#decide'
+  authenticated :user do
+    root to: 'users#index', as: :authenticated_root
+  end
   root to: "static_pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
