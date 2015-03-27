@@ -1,4 +1,4 @@
-<nav class="tab-bar <%= 'clear' if current_page?(root_path) %>">
+<nav class="tab-bar <%= 'white' unless current_page?(root_path) %>">
   <section class="left-small">
     <a class="left-off-canvas-toggle" href="#"><i class="ion-navicon-round"></i><span>Menu</span></a>
   </section>
@@ -10,9 +10,17 @@
 
 <aside class="left-off-canvas-menu">
   <ul class="off-canvas-list">
-    <li><a href=""><span>Merl</span><i class="ion-navicon-round"></i></a></li>
+    <li><%= link_to root_path do %>
+      <span>MERL</span>
+      <i class="ion-navicon-round"></i>
+     <% end %> 
+    </li>
     <% if signed_in? %>
-	    <li><%= link_to "Profile", current_user %><span>Profile</span><i class="ion-gear-a"></i></a></li>
+	    <li><%= link_to current_user do %>
+            <span>Profile</span>
+            <i class="ion-gear-a"></i>
+           <% end %> 
+          </li>
 	    <li><a href=""><span>Messages</span><i class="ion-email"></i></a></li>
 	    <li><a href=""><span>Search</span><i class="ion-search"></i></a></li>
 	    <li><a href=""><span>Tutorial</span><i class="ion-information"></i></a></li>

@@ -17,6 +17,10 @@
 @import "icons";
 @import "foundation_and_overrides";
 
+section.main-section.grey {
+ background-color: $lightest-grey;
+}
+
 // 1.0 Menu
 
 // 1.1 Top bar
@@ -48,6 +52,16 @@ section.right-small {
 section.left-small {
  span {
   padding-left: rem-calc(20); 
+ }
+}
+
+nav.white {
+ background-color: $white;
+
+ section.left-small, section.right-small {
+  a {
+   color: $light-grey;
+  }
  }
 }
 
@@ -92,15 +106,30 @@ div.splash-content {
   padding: rem-calc(30) 0;
   color: white;
   font-size: rem-calc(38);
+  @media #{$small-only} { 
+   font-size: rem-calc(30);
+  }
   font-family: $font-family-menus;
   text-transform: uppercase;
+   @include grid-column(
+   $columns: 11,
+   $center: true
+   );
  }
  h4 {
   padding: rem-calc(25) 0;
-  @include grid-column(
-   $columns: 7,
-   $center: true
-   );
+  @media #{$medium-up} { 
+   @include grid-column(
+    $columns: 7,
+    $center: true
+    );
+  }
+  @media #{$small-only} { 
+   @include grid-column(
+    $columns: 11,
+    $center: true
+    );
+  } 
   font-weight: $font-weight-light;
   color: $white;
  }
@@ -151,9 +180,11 @@ p.about {
 div.steps {
  padding: rem-calc(50);
  @extend .text-center;
- @include grid-column(
-  $columns: 4
- );
+ @media #{$medium-up} { 
+  @include grid-column(
+   $columns: 4
+  );
+ }
 }
 
 div.icon-container {
@@ -183,7 +214,9 @@ div.text-container {
  }
  p {
   @extend .text-center;
-  width: 60%;
+  @media #{$large-up} { 
+   width: 60%;
+  }
   margin: 0 auto;
  }
 }
