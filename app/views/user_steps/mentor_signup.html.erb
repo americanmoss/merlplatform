@@ -1,3 +1,12 @@
+<h1>Please complete your profile below</h1>
+
+<div class="container profile-container">
+	<div></div>
+	<div class="image-container">
+ 		<%= image_tag(@user.linkedin_image_url, class: 'profile-picture') %>
+ 	</div>
+</div>
+
 <div class="large-6 large-centered columns">	
 	<%= form_for @user, url: wizard_path do |f| %>
 		<h2>Complete your profile below</h2>

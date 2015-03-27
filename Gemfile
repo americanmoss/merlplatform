@@ -31,6 +31,9 @@ gem 'foundation-rails', '5.5.0'
 # Use Chosen to for better select boxes
 gem 'chosen-rails'
 
+# Use toaster for better alert boxes
+gem 'toastr-rails'
+
 # Use Wicked to build multi-step signup forms
 gem 'wicked'
 

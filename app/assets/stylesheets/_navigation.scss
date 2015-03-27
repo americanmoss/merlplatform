@@ -1,0 +1,64 @@
+// Top bar
+
+section.left-small, section.right-small {
+ text-align: center;
+ width: 180px;
+ font-family: $font-family-menus;
+ a {
+  color: $white;
+ }
+ i {
+  text-align: center;
+  font-size: rem-calc(40);
+  vertical-align: middle;
+ }
+ span {
+  text-transform: uppercase;
+  font-size: rem-calc(18);
+ }
+}
+
+section.right-small {
+ span {
+  padding-right: rem-calc(20); 
+ }
+}
+
+section.left-small {
+ span {
+  padding-left: rem-calc(20); 
+ }
+}
+
+nav.white {
+ background-color: $white;
+
+ section.left-small, section.right-small {
+  a {
+   color: $light-grey;
+  }
+ }
+}
+
+// Offcanvas (side) bar
+
+aside.left-off-canvas-menu {
+ font-family: $font-family-menus;
+ font-weight: $font-weight-bold;
+ text-transform: uppercase;
+ text-align: right;
+ li {
+  height: 75px;
+  padding-top: rem-calc(4);
+  padding-right: rem-calc(17);
+  span {
+   padding-right: rem-calc(20); 
+   font-size: rem-calc(18);
+  }
+  i {
+   text-align: center;
+   font-size: rem-calc(40);
+   vertical-align: middle;
+  }
+ }
+}

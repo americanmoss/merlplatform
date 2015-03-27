@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def toast(type, text)
+  		flash[:toastr] = { type => text }
+	end
+
 	def ensure_signup_complete
 		if current_user && !current_user.signup_finished?
 			redirect_to finish_signup_path(current_user)

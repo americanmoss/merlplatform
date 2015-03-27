@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require toastr
  *= require chosen
  */
 
@@ -17,224 +18,17 @@
 @import "icons";
 @import "foundation_and_overrides";
 
-section.main-section.grey {
- background-color: $lightest-grey;
-}
 
-// 1.0 Menu
+@import "general";
+@import "navigation";
+@import "home";
 
-// 1.1 Top bar
-
-section.left-small, section.right-small {
- text-align: center;
- width: 180px;
- font-family: $font-family-menus;
- a {
-  color: $white;
- }
- i {
-  text-align: center;
-  font-size: rem-calc(40);
-  vertical-align: middle;
- }
- span {
-  text-transform: uppercase;
-  font-size: rem-calc(18);
- }
-}
-
-section.right-small {
- span {
-  padding-right: rem-calc(20); 
- }
-}
-
-section.left-small {
- span {
-  padding-left: rem-calc(20); 
- }
-}
-
-nav.white {
- background-color: $white;
-
- section.left-small, section.right-small {
-  a {
-   color: $light-grey;
-  }
- }
-}
-
-// 1.2 Side bar
-
-aside.left-off-canvas-menu {
- font-family: $font-family-menus;
- font-weight: $font-weight-bold;
- text-transform: uppercase;
- text-align: right;
- li {
-  height: 75px;
-  padding-top: rem-calc(4);
-  padding-right: rem-calc(17);
-  span {
-   padding-right: rem-calc(20); 
-   font-size: rem-calc(18);
-  }
-  i {
-   text-align: center;
-   font-size: rem-calc(40);
-   vertical-align: middle;
-  }
- }
-}
-
-// 2.0 Home Page
-
-div.container {
- @include grid-row();
-}
-
-$splash-height: rem-calc(650);
-
-div.splash-content {
- @extend .text-center;
- color: $white;
- h1, h4 {
-  margin: 0;
- }
- h1 {
-  padding: rem-calc(30) 0;
-  color: white;
-  font-size: rem-calc(38);
-  @media #{$small-only} { 
-   font-size: rem-calc(30);
-  }
-  font-family: $font-family-menus;
-  text-transform: uppercase;
-   @include grid-column(
+div.profile-container {
+ @media #{$medium-up} {
+  @include grid-column(
    $columns: 11,
    $center: true
-   );
+   )
  }
- h4 {
-  padding: rem-calc(25) 0;
-  @media #{$medium-up} { 
-   @include grid-column(
-    $columns: 7,
-    $center: true
-    );
-  }
-  @media #{$small-only} { 
-   @include grid-column(
-    $columns: 11,
-    $center: true
-    );
-  } 
-  font-weight: $font-weight-light;
-  color: $white;
- }
-
- .white-button {
-  margin: rem-calc(60) 0;
-  padding: rem-calc(25) rem-calc(50);
-  min-width: 325px;
-  background-color: $white;
-  color: $grey-mask-solid;
-  font-size: rem-calc(25);
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: rem-calc(5);
- }
-}
-
-div.splash-laptop {
- height: $splash-height - $tabbar-height;
-}
-
-div.splash {
- background-image: image-url('lone_entrepreneur.png');
- background-repeat: no-repeat;
- background-position: center center;
- background-size: cover;
- z-index: -1;
- height: $splash-height;
- background-color: $grey-mask;
-}
-
-div.grey {
- background-color: $lightest-grey;
-}
-
-p.about {
- color: $dark-grey;
- padding: rem-calc(50);
- font-size: rem-calc(22);
- margin: 0;
- @extend .text-center;
- @include grid-column(
-  $columns: 8,
-  $center: true
- );
-}
-
-div.steps {
- padding: rem-calc(50);
- @extend .text-center;
- @media #{$medium-up} { 
-  @include grid-column(
-   $columns: 4
-  );
- }
-}
-
-div.icon-container {
- @extend .text-center;
- width: 100px;
- height: 100px;
- margin: 0 auto;
- border-radius: 50%;
- border: 1px solid $light-grey; 
- 
- i {
-  font-size: rem-calc(40);
-  line-height: 100px;
- }
-}
-
-div.text-container {
- color: $medium-grey;
- h1 {
-  padding-top: rem-calc(20);
-  font-family: $font-family-menus;
-  text-transform: uppercase;
-  font-weight: $font-weight-bold;
-  font-size: rem-calc(22);
-  color: $medium-grey;
-  margin: 0;
- }
- p {
-  @extend .text-center;
-  @media #{$large-up} { 
-   width: 60%;
-  }
-  margin: 0 auto;
- }
-}
-
-div.splash-handshake {
- background-image: image-url('handshake.png');
- background-repeat: no-repeat;
- background-position: center center;
- background-size: cover;
-
- h1 {
-  padding-top: rem-calc(90);
- }
-
- span {
-  text-transform: uppercase;
-  font-family: $font-family-menus;
-  font-size: rem-calc(30);
-  padding: 0 rem-calc(40);
- }
+ padding-top: rem-calc(40);
 }

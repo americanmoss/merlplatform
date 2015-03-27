@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
+//= require toastr
 //= require chosen-jquery
 //= require chosen
 //= require_tree .
@@ -24,5 +25,3 @@ $(function() {
 	});
 });
 
-
-$(function(){ $(document).foundation(); });
