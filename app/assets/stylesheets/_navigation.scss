@@ -32,6 +32,7 @@ section.left-small {
 
 nav.white {
  background-color: $white;
+ @include card(1);
 
  section.left-small, section.right-small {
   a {
@@ -43,6 +44,7 @@ nav.white {
 // Offcanvas (side) bar
 
 aside.left-off-canvas-menu {
+  @include card(1);
  font-family: $font-family-menus;
  font-weight: $font-weight-bold;
  text-transform: uppercase;

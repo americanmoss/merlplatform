@@ -91,6 +91,24 @@
 		</div>
 	</div>
 
+	<div class="container">
+		<div class="container attribute-container">
+			<div class="container">
+				<p>Finally, please select the industry with which you most identify, to the right. You'll still be able to keep "<%= @user.linkedin_industry %>" on your profile, but the industry you choose here is what entrepreneurs will be able to filter on.</p>
+				<div class="industry">
+					<%= f.select :industry_id,
+  						Industry.all.map { |i| [i.name, i.id] },
+               { include_blank: true },
+               { class: 'chosen-select form-control',
+               		"data-placeholder" => 'Choose an industry.', 
+							multiple: false  
+						}
+					%>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </div>
 

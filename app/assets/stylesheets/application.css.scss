@@ -29,11 +29,11 @@ div.profile-container {
   @include grid-column(
    $columns: 10,
    $center: true
-   )
+   );
+  @include card(3);
  }
  background-color: $red;
  margin-top: rem-calc(40);
- border-radius: rem-calc(10);
 
  div.container {
   background-color: $white;
@@ -125,11 +125,25 @@ div.attribute-container {
   font-weight: $font-weight-light;
   font-size: rem-calc(23);
  }
+ p {
+  @extend .text-justify;
+  @include grid-column(
+  $columns: 7
+ );
+  font-size: rem-calc(18);
+ }
+}
+
+div.industry {
+  @include grid-column(
+  $columns: 4,
+  $offset: 1
+ );
 }
 
 div.attribute-title-container {
  @include grid-column(
-  $columns: 2
+  $columns: 3
  );
  @extend .text-center;
  color: $light-grey;
@@ -148,6 +162,6 @@ div.attribute-title-container {
 
 div.attributes {
  @include grid-column(
-  $columns: 10
+  $columns: 9
  );
 }

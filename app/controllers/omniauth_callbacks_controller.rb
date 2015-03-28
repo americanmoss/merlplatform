@@ -22,6 +22,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		else
 			session["devise.linkedin"] = request.env["omniauth.auth"]
 			redirect_to root_url
+			toast :failure, "Something went wrong. Please try again later."
 		end
 	end
 
