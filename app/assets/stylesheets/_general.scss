@@ -11,9 +11,16 @@ input {
  font-family: $font-family-sans-serif;
 }
 
+textarea:focus {
+  background: inherit;
+  border: 1px solid #cccccc;
+  outline: none;
+}
+
 @mixin translate {
   position: absolute;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
