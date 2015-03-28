@@ -26,9 +26,126 @@
 div.profile-container {
  @media #{$medium-up} {
   @include grid-column(
-   $columns: 11,
+   $columns: 10,
    $center: true
    )
  }
- padding-top: rem-calc(40);
+ background-color: $red;
+ margin-top: rem-calc(40);
+ border-radius: rem-calc(10);
+
+ div.container {
+  background-color: $white;
+ }
+}
+
+div.user-type-container {
+ height: 125px;
+ margin:  rem-calc(50) rem-calc(50) 0 0;
+ @extend .text-right;
+ clear: both;
+}
+
+div.user-type-icon {
+ width: 50px;
+ height: 50px;
+ border-radius: rem-calc(5);
+ border: 1px solid $white;
+ color: $white;
+ font-weight: $font-weight-medium;
+ font-size: rem-calc(30);
+ @extend .text-center;
+ line-height: 50px;
+ margin: rem-calc(20) 0 rem-calc(20) auto;
+}
+
+span.user-type {
+ color: $white;
+ font-size: rem-calc(18);
+}
+
+div.headline-container {
+ background-color: $white;
+ div {
+  background-color: $white;
+ }
+}
+
+div.avatar-container {
+ position: relative;
+ @include grid-column(
+   $columns: 3
+   );
+ height: 150px;
+}
+
+img.avatar {
+ @include translate;
+ z-index: 1;
+ top: 0;
+ border-radius: 50%;
+ border: 15px solid $white;
+ height: 250px;
+ width: 250px;
+ overflow: hidden;
+ margin: 0 rem-calc(50);
+ clear: none;
+}
+
+div.name-container {
+ @include grid-column(
+   $columns: 9
+  );
+ padding: rem-calc(20) rem-calc(50) 0 0;
+ @extend .text-right;
+
+ h1 { 
+  font-weight: $font-weight-medium;
+  font-size: rem-calc(40);
+ }
+
+ h4 {
+  font-weight: $font-weight-light;
+  color: $medium-grey;
+ }
+}
+
+div.attribute-container {
+ @include grid-column(
+   $columns: 11,
+   $center: true
+  );
+ background-color: $white;
+ padding: rem-calc(50) 0;
+ border-top: 1px solid $lightest-grey;
+ textarea {
+  padding: rem-calc(5);
+  font-weight: $font-weight-light;
+  font-size: rem-calc(23);
+ }
+}
+
+div.attribute-title-container {
+ @include grid-column(
+  $columns: 2
+ );
+ @extend .text-center;
+ color: $light-grey;
+ i {
+  font-size: rem-calc(100);
+  line-height: rem-calc(100);
+ }
+ h5 {
+  font-family: $font-family-menus;
+  font-size: rem-calc(18);
+  line-height: rem-calc(30);
+  text-transform: uppercase;
+  color: $light-grey;
+ }
+} 
+
+div.attributes {
+ @include grid-column(
+  $columns: 10
+ );
 }

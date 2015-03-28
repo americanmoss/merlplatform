@@ -1,57 +1,99 @@
-<h1>Please complete your profile below</h1>
-
+<%= form_for @user, url: wizard_path do |f| %>
+<br/>
 <div class="container profile-container">
-	<div></div>
-	<div class="image-container">
- 		<%= image_tag(@user.linkedin_image_url, class: 'profile-picture') %>
- 	</div>
+	<div class="user-type-container">
+		<div class="user-type-icon">M</div>
+		<span class="user-type">MERL Member</span>
+	</div>
+ 
+	<div class="container headline-container">
+		<div class="avatar-container">
+			<%= image_tag(@user.linkedin_image_url, class: 'avatar') %>
+		</div>
+
+		<div class="name-container">
+			<h1><%= @user.name %></h1>
+			<h4><%= @user.linkedin_industry %></h4>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="attribute-container">
+			<%= f.text_area :purpose,
+				placeholder: "In a few words, tell us what you hope to achieve by joining MERL. For example, \"Mentor companies working in the machine learning and artificial intelligence spaces.\"",
+				rows: "3"
+			%>
+		</div>
+	</div>
+	<div class="container">
+		<div class="container attribute-container">
+			<div class="container">
+				<div class="attribute-title-container">
+					<div class="title-container">
+						<i class="ion-settings"></i>
+						<h5>Expertise</h5>
+					</div>
+				</div>
+				<div class="attributes">
+					<%= f.collection_select :skill_ids, Skill.all, :id, :name, 
+						{ include_blank: true },
+						{ class: 'chosen-select form-control',  
+							"data-placeholder" => 'Choose a few areas in which you would be comfortable advising companies.', 
+							multiple: true 
+						}
+					%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="container attribute-container">
+			<div class="container">
+				<div class="attribute-title-container">
+					<div class="title-container">
+						<i class="ion-ribbon-b"></i>
+						<h5>Achievements</h5>
+					</div>
+				</div>
+				<div class="attributes">
+					<%= f.collection_select :achievement_ids, Achievement.all, :id, :description, 
+						{ include_blank: true },
+						{ class: 'chosen-select form-control',  
+							"data-placeholder" => 'Tell us how you qualify for the Maryland Entrepreneurs Resource List.', 
+							multiple: true 
+						}
+					%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="container attribute-container">
+			<div class="container">
+				<div class="attribute-title-container">
+					<div class="title-container">
+						<i class="ion-connection-bars"></i>
+						<h5>Commitment</h5>
+					</div>
+				</div>
+				<div class="attributes">
+					<%= f.collection_select :commitment_ids, Commitment.all, :id, :description, 
+						{ include_blank: true },
+						{ class: 'chosen-select form-control',  
+							"data-placeholder" => 'Tell us what level of commitment you expect to be able to give in the near future.', 
+							multiple: true 
+						}
+					%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 </div>
 
-<div class="large-6 large-centered columns">	
-	<%= form_for @user, url: wizard_path do |f| %>
-		<h2>Complete your profile below</h2>
-		<p>This is how other MERL members and entrepreneurs will see your profile.</p>
-
-		<!-- Add in purpose -->
-
-		<div class="field">
-			<%= f.select :industry_id,
-				Industry.all.collect { |i| [i.name, i.id] },
-				{ include_blank: true },
-				{ class: 'chosen-select',
-				"data-placeholder" => 'Select your industry' }
-			%>
-		</div>
-
-		<div class="field">
-			<%= f.collection_select :skill_ids, Skill.all, :id, :name, 
-				{ include_blank: true },
-				{ class: 'chosen-select',  
-					"data-placeholder" => 'Tell us about your areas of expertise', 
-					multiple: true 
-				}
-			%>
-		</div>
-
-		<div class="field">
-			<%= f.collection_select :achievement_ids, Achievement.all, :id, :description, 
-				{ include_blank: true },
-				{ class: 'chosen-select',  
-					"data-placeholder" => 'Tell us how you qualify for MERL', 
-					multiple: true 
-				}
-			%>
-		</div>
-
-		<div class="field">
-			<%= f.collection_select :commitment_ids, Commitment.all, :id, :description, 
-				{ include_blank: true },
-				{ class: 'chosen-select',  
-					"data-placeholder" => 'Tell us about your level of commitment', 
-					multiple: true 
-				}
-			%>
-		</div>
 		
 		<div class="actions">
 			<%= f.submit "Continue",
