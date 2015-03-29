@@ -15,13 +15,12 @@ class UserStepsController < ApplicationController
 
  def update
   @user = current_user
-  current_user.user_status = 1 if step == steps.last
   @user.attributes = user_params
   render_wizard @user
  end
 
  def finish_wizard_path
-  current_user.user_status = 1
+  current_user.user_status = 2
   current_user.save
   flash[:success] = "Signup complete."
   users_path

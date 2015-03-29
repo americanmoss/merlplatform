@@ -16,6 +16,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 
 		if @user.persisted?
+			user = @user
+			user.user_status = 1;
+			user.save
 			sign_in_and_redirect @user, :event => :authentication
 			@user.pull_linkedin_info
 			toast :success, "Welcome to MERL, #{@user.name}. Please complete your profile by filling in the information below."
@@ -27,7 +30,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	end
 
 	def after_sign_in_path_for(resource)
-		if resource.inactive?
+		if resource.signup_started?
 			user_steps_path(resource)
 		end
 	end

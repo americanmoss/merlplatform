@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	has_many :positions
 	has_many :educations
 
-	validates :purpose, :industry_id, :skill_ids, :commitment_ids, :achievement_ids, presence: true, if: :signup_finished?
+	validates :purpose, :industry_id, :skill_ids, :commitment_ids, :achievement_ids, presence: true, if: :signup_started?
 
 	enum user_type: {
 		entrepreneur: 0,
@@ -25,9 +25,10 @@ class User < ActiveRecord::Base
 
 	enum user_status: {
 		inactive: 0,
-		signup_finished: 1,
-		hidden: 2,
-		administrator: 3
+		signup_started: 1,
+		signup_finished: 2,
+		hidden: 3,
+		administrator: 4
 	}
 
 	def self.from_omniauth(auth ,params)
@@ -55,6 +56,9 @@ class User < ActiveRecord::Base
 	end
 
 	def pull_linkedin_info
+		# Indicate that signup process has begun
+		self.user_status = 1
+		self.save
 		api = LinkedIn::API.new(linkedin_token)
 		self.linkedin_image_url = api.picture_urls.all.first
 
