@@ -1,4 +1,54 @@
 <% provide(:title, @profile.name) %>
+<br/>
+<div class="container profile-container">
+	<div class="user-type-container">
+		<div class="user-type-icon"><%= @user.symbol_user_type %></div>
+		<span class="user-type"><%= @user.string_user_type %></span>
+	</div>
+ 
+	<div class="container headline-container">
+		<div class="avatar-container">
+			<%= image_tag(@user.linkedin_image_url, class: 'avatar') %>
+		</div>
+
+		<div class="name-container">
+			<h1><%= @user.name %></h1>
+			<h4><%= @user.linkedin_industry %></h4>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="attribute-container">
+			<%= @profile.purpose %>
+		</div>
+	</div>
+</div>
+
+<div class="container profile-row-container">
+	<div class="container">
+		<div class="container attribute-container">
+			<div class="container">
+				<div class="attribute-title-container">
+					<div class="title-container">
+						<i class="ion-settings"></i>
+						<h5>Expertise</h5>
+					</div>
+				</div>
+				<div class="attributes">
+					<%= @user.skills.all.each do |s| %>
+						<span><%= s.name %></span>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+
+
 <div class="row">
 	<div class="small-12 large-centered columns">
 		<div class="large-2 columns text-center">

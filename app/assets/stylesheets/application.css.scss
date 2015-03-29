@@ -24,7 +24,7 @@
 @import "home";
 @import "forms";
 
-div.profile-container {
+div.signup-container, div.profile-container {
  @media #{$medium-up} {
   @include grid-column(
    $columns: 10,
@@ -77,9 +77,9 @@ div.headline-container {
 div.avatar-container {
  position: relative;
  @include grid-column(
-   $columns: 3
+   $columns: 7
    );
- height: 150px;
+ height: 100px;
 }
 
 img.avatar {
@@ -97,7 +97,7 @@ img.avatar {
 
 div.name-container {
  @include grid-column(
-   $columns: 9
+   $columns: 5
   );
  padding: rem-calc(20) rem-calc(50) 0 0;
  @extend .text-right;
@@ -123,7 +123,8 @@ div.attribute-container {
  padding: rem-calc(50) 0;
  border-top: 1px solid $lightest-grey;
  textarea {
-  padding: rem-calc(5);
+  padding: rem-calc(10);
+  margin: 0;
   font-weight: $font-weight-light;
   font-size: rem-calc(23);
  }
@@ -176,33 +177,59 @@ div.action-container {
   input.button {
     color: $white;
     padding: 0;
-    font-weight: $font-weight-light;
     line-height: 175px;
     width: 100%;
-    font-family: $font-family-sans-serif;
     font-size: rem-calc(40);
-  }
-
-  // div.continue-button-container {
-  //   position: relative;
-  //   width: 100%;
-  // }
-
-  div.continue-button {
-    // position: absolute;
-    // top: -185px;
-    // left: 75%;
-    // @include translate;
-    background-color: $yellow;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    @include card(1);
-
-    i {
-      color: $white;
-      line-height: 100px;
-      
-    }
+    text-transform: uppercase;
   }
 }
+
+div.profile-container, div.profile-row-container {
+  @include grid-column(
+   $columns: 11,
+   $center: true
+   );
+  div.avatar-container {
+    @include grid-column(
+      $columns: 5
+    );
+  }
+
+  div.user-type-container {
+   height: 100px;
+   margin:  rem-calc(25) rem-calc(25) 0 0;
+  }
+
+  div.user-type-icon {
+    margin: rem-calc(10) 0 rem-calc(10) auto;
+  }
+
+  img.avatar {
+   border: 15px solid $white;
+   height: 200px;
+   width: 200px;
+   overflow: hidden;
+   margin: 0 rem-calc(25);
+   clear: none;
+  }
+
+  div.name-container {
+   @include grid-column(
+     $columns: 7
+    );
+   padding: rem-calc(10) rem-calc(25) 0 0;
+   @extend .text-right;
+  }
+}
+
+div.profile-row-container {
+  max-width: 1200px; 
+  div.attribute-container {
+    @include grid-column(
+      $columns: 3
+    );
+    @include card(2);
+  }
+}
+
+
