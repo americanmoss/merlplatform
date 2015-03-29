@@ -14,7 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
-//= require toastr
+//= require toaster
 //= require chosen-jquery
 //= require chosen
 //= require_tree .

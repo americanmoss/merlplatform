@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 	has_many :positions
 	has_many :educations
 
-	validates :industry_id, :skill_ids, presence: true
+	validates :purpose, :industry_id, :skill_ids, :commitment_ids, :achievement_ids, presence: true
 
 	enum user_type: {
 		entrepreneur: 0,

@@ -20,4 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        purpose: ""
+        industry_id: ""
+        skill_ids: ""
+        achievement_ids: ""
+        commitment_ids: ""
+    errors:
+      models:
+        user:
+          attributes:
+            purpose: 
+             blank: "Please tell us what you want to get out of MERL"
+            industry_id:
+              blank: "Please select an Industry"
+            skill_ids: 
+             blank: "Please choose at least one area of expertise"
+            achievement_ids:
+             blank: "Please choose at least one achievement that makes you eligible for MERL"
+            commitment_ids:
+             blank: "Please choose at least one descriptor of your level of commitment"
