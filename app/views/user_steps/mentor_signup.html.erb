@@ -2,8 +2,8 @@
 <br/>
 <div class="container profile-container">
 	<div class="user-type-container">
-		<div class="user-type-icon">M</div>
-		<span class="user-type">MERL Member</span>
+		<div class="user-type-icon"><%= @user.symbol_user_type %></div>
+		<span class="user-type"><%= @user.string_user_type %></span>
 	</div>
  
 	<div class="container headline-container">
@@ -109,14 +109,18 @@
 		</div>
 	</div>
 
+	<div class="action-container">
+		<%= f.submit "Continue",
+			{ class: 'button' }
+		%>
+	</div>
+
 
 </div>
 
 		
 		<div class="actions">
-			<%= f.submit "Continue",
-				{ class: 'button' }
-			%>
+			
 		</div>
 	<% end %>	
 </div>

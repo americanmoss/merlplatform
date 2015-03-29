@@ -30,10 +30,12 @@ div.profile-container {
    $columns: 10,
    $center: true
    );
-  @include card(3);
+  max-width: 1200px;
+  @include card(2);
  }
  background-color: $red;
  margin-top: rem-calc(40);
+ margin-bottom: rem-calc(40);
 
  div.container {
   background-color: $white;
@@ -164,4 +166,43 @@ div.attributes {
  @include grid-column(
   $columns: 9
  );
+}
+
+div.action-container {
+  background-color: $red;
+  height: 175px;
+  @extend .text-center;
+
+  input.button {
+    color: $white;
+    padding: 0;
+    font-weight: $font-weight-light;
+    line-height: 175px;
+    width: 100%;
+    font-family: $font-family-sans-serif;
+    font-size: rem-calc(40);
+  }
+
+  // div.continue-button-container {
+  //   position: relative;
+  //   width: 100%;
+  // }
+
+  div.continue-button {
+    // position: absolute;
+    // top: -185px;
+    // left: 75%;
+    // @include translate;
+    background-color: $yellow;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    @include card(1);
+
+    i {
+      color: $white;
+      line-height: 100px;
+      
+    }
+  }
 }

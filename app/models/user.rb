@@ -114,6 +114,28 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def string_user_type
+		case self[:user_type]
+		when 0
+			"Entrepreneur"
+		when 1
+			"MERL Member"
+		when 2
+			"MERL Ambassador"
+		end
+	end
+
+	def symbol_user_type
+		case self[:user_type]
+		when 0
+			"E"
+		when 1
+			"M"
+		when 2
+			"A"
+		end
+	end
+
 	private
 
 	def linkedin_client
