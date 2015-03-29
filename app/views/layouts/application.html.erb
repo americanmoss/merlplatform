@@ -26,13 +26,7 @@
 				<%= render 'layouts/splash_end' %>	
 			<% end %>
 			<section class="main-section <%= 'grey' unless current_page?(root_path) %>">
-				<% if flash[:toastr] %>
-  					<script type="text/javascript">
-    					<% flash[:toastr].each do |type, message| %>
-      					toastr.<%= type %>(<%= raw message.inspect %>)
-    					<% end %>
-  					</script>
-				<% end %>
+				<%= render 'layouts/notifications' %>
 				<%= yield %>
 			</section>
 		<a class="exit-off-canvas"></a>

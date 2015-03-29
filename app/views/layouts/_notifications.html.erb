@@ -1,0 +1,16 @@
+<% if flash[:toastr] %>
+   <script type="text/javascript">
+     <% flash[:toastr].each do |type, message| %>
+       toastr.<%= type %>(<%= raw message.inspect %>)
+     <% end %>
+   </script>
+<% end %>
+<% if @user %>
+  <% if @user.errors %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <script type="text/javascript">
+        toastr.error(<%= raw msg.inspect %>)
+      </script>
+    <% end %>
+  <% end %>
+<% end %>
