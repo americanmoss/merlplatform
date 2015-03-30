@@ -20,9 +20,9 @@ class UserStepsController < ApplicationController
  end
 
  def finish_wizard_path
-  current_user.user_status = 2
   current_user.save
   flash[:success] = "Signup complete."
+  current_user.user_status = 2
   users_path
  end
 

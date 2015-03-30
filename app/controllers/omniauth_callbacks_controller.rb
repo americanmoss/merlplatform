@@ -16,11 +16,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 
 		if @user.persisted?
-			user = @user
-			user.user_status = 1;
-			user.save
-			sign_in_and_redirect @user, :event => :authentication
 			@user.pull_linkedin_info
+			@user.user_status = 1
+			sign_in_and_redirect @user, :event => :authentication
 			toast :success, "Welcome to MERL, #{@user.name}. Please complete your profile by filling in the information below."
 		else
 			session["devise.linkedin"] = request.env["omniauth.auth"]

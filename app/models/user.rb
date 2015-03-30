@@ -56,9 +56,7 @@ class User < ActiveRecord::Base
 	end
 
 	def pull_linkedin_info
-		# Indicate that signup process has begun
-		self.user_status = 1
-		self.save
+		
 		api = LinkedIn::API.new(linkedin_token)
 		self.linkedin_image_url = api.picture_urls.all.first
 
