@@ -61,6 +61,37 @@
 	</div>
 </div>
 
+<div class="container profile-row-container">
+	<div class="container" data-equalizer>
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="attribute-card">
+				<i class="ion-briefcase"></i>
+				<h5>Experience</h5>
+
+				<% @user.positions.first(3).each do |p| %>
+					<span><%= p.title %></span>, <span><%= p.name %></span><br/>
+				<% end %>	
+			</div>
+		</div>
+
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="attribute-card">
+				<i class="ion-ios-location"></i>
+				<h5>Location</h5>
+
+			</div>
+		</div>
+
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="attribute-card">
+				<i class="ion-university"></i>
+				<h5>Education</h5>
+					<span><%= @user.educations.first.school_name %></span>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 

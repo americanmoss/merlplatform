@@ -228,6 +228,7 @@ div.profile-show {
 
 div.profile-row-container {
   max-width: 1200px; 
+  margin-bottom: rem-calc(20);
   div.attribute-card-container {
     @include grid-column(
       $columns: 4
