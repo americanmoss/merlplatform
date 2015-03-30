@@ -222,14 +222,55 @@ div.profile-container, div.profile-row-container {
   }
 }
 
+div.profile-show {
+  margin-bottom: rem-calc(20);
+}
+
 div.profile-row-container {
   max-width: 1200px; 
-  div.attribute-container {
+  div.attribute-card-container {
     @include grid-column(
-      $columns: 3
+      $columns: 4
     );
-    @include card(2);
+    &:nth-child(1) {
+      div.attribute-card {
+        margin-right: rem-calc(12.5);
+      }
+    }
+    &:nth-child(2) {
+      div.attribute-card {
+        margin: 0 rem-calc(7.5);
+      }
+    }
+    &:nth-child(3) {
+      div.attribute-card {
+        margin-left: rem-calc(12.5);
+      }
+    }
   }
+
+  div.attribute-card {
+    @extend .text-center;
+    @include card(2);
+    height: 100%;
+    background-color: $white;
+    padding: rem-calc(20) rem-calc(30);
+
+    i {
+      font-size: rem-calc(60);
+      line-height: rem-calc(50);
+      color: $light-grey;
+    }
+
+    h5 {
+      font-family: $font-family-menus;
+      text-transform: uppercase;
+      color: $light-grey;
+      padding-bottom: rem-calc(15);
+      border-bottom: 1px solid $lightest-grey;
+    }
+  }
+
 }
 
 

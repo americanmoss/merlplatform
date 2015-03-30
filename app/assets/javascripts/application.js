@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
+// = foundation.equalizer.js
 //= require toaster
 //= require chosen-jquery
 //= require chosen

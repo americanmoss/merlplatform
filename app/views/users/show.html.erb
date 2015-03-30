@@ -1,6 +1,6 @@
 <% provide(:title, @profile.name) %>
 <br/>
-<div class="container profile-container">
+<div class="container profile-container profile-show">
 	<div class="user-type-container">
 		<div class="user-type-icon"><%= @user.symbol_user_type %></div>
 		<span class="user-type"><%= @user.string_user_type %></span>
@@ -25,31 +25,49 @@
 </div>
 
 <div class="container profile-row-container">
-	<div class="container">
-		<div class="container attribute-container">
-			<div class="container">
-				<div class="attribute-title-container">
-					<div class="title-container">
-						<i class="ion-settings"></i>
-						<h5>Expertise</h5>
-					</div>
-				</div>
-				<div class="attributes">
-					<%= @user.skills.all.each do |s| %>
-						<span><%= s.name %></span>
-					<% end %>
-				</div>
+	<div class="container" data-equalizer>
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="attribute-card">
+				<i class="ion-settings"></i>
+				<h5>Expertise</h5>
+
+				<% @user.skills.all.each_with_index do |s, i| %>
+					<span><%= s.name %></span><%= " · " unless i == @user.skills.size - 1 %>
+				<% end %>	
+			</div>
+		</div>
+
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="attribute-card">
+				<i class="ion-ribbon-b"></i>
+				<h5>Achievements</h5>
+
+				<% @user.achievements.all.each_with_index do |a, i| %>
+					<span><%= a.description %></span><%= " · " unless i == @user.achievements.size - 1 %>
+				<% end %>	
+			</div>
+		</div>
+
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="attribute-card">
+				<i class="ion-connection-bars"></i>
+				<h5>Commitment</h5>
+
+				<% @user.commitments.all.each_with_index do |c, i| %>
+					<span><%= c.description %></span><%= " · " unless i == @user.commitments.size - 1 %>
+				<% end %>	
 			</div>
 		</div>
 	</div>
-
-	
-
+</div>
 
 
 
 
-<div class="row">
+
+
+
+<!-- <div class="row">
 	<div class="small-12 large-centered columns">
 		<div class="large-2 columns text-center">
 			<%= image_tag(@profile.linkedin_image_url, class: 'profile-picture') %>
@@ -96,4 +114,4 @@
 
 		</div>
 	</div>
-</div>
+</div> -->

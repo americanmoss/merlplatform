@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
 	validates :purpose, :industry_id, :skill_ids, :commitment_ids, :achievement_ids, presence: true, if: :signup_started?
 
+	# If updated, don't forget to update string_user_type and symbol_user_type methods, below
 	enum user_type: {
 		entrepreneur: 0,
 		merl_member: 1,
