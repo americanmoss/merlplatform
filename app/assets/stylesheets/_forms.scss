@@ -52,12 +52,14 @@ textarea:focus {
        background-image: none;
        background-size: 0;
        line-height: rem-calc(23) !important;
+       padding: rem-calc(10) rem-calc(20) !important;
        color: $medium-grey !important;
        box-shadow: none !important;
        background-image: none !important;
        background-size: 0 !important;
-       background-color: #fafafa !important;
+       background-color: $lightest-grey !important;
        border-radius: 0 !important;
+       border: 0 !important;
        span {
          word-wrap: break-word;
        }
@@ -68,7 +70,7 @@ textarea:focus {
          // display: block;
          // width: 12px;
          // height: 12px;
-         color: $lightest-grey !important;
+         color: $white !important;
          background: none;
          // font-size: 1px;
          &:hover {
@@ -109,6 +111,8 @@ textarea:focus {
   font-family: $font-family-sans-serif !important;
   font-weight: $font-weight-light !important;
   color: $light-grey;
+  line-height: 43px !important;
+  height: auto !important;
 }
 
 .chosen-container {

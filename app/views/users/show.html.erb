@@ -2,26 +2,20 @@
 <br/>
 <div class="container profile-container profile-show">
 	<div class="user-type-container">
-		<div class="user-type-icon"><%= @user.symbol_user_type %></div>
-		<span class="user-type"><%= @user.string_user_type %></span>
+		<div class="user-type-icon"><%= @profile.symbol_user_type %></div>
+		<span class="user-type"><%= @profile.string_user_type %></span>
 	</div>
  
 	<div class="container headline-container">
 		<div class="avatar-container">
-			<%= image_tag(@user.linkedin_image_url, class: 'avatar') %>
+			<%= image_tag(@profile.linkedin_image_url, class: 'avatar') %>
 		</div>
 
 		<div class="name-container">
-			<h1><%= @user.name %></h1>
-			<h4><%= @user.linkedin_industry %></h4>
+			<h1><%= @profile.name %></h1>
+			<h4><%= @profile.linkedin_industry %></h4>
 		</div>
 	</div>
-
-	<!-- <div class="container">
-		<div class="attribute-container">
-			<%= @profile.purpose %>
-		</div>
-	</div> -->
 </div>
 
 <p class="purpose"><%= @profile.purpose %></p>
@@ -38,7 +32,7 @@
 				</div>
 			</div>
 			<div class="attribute-card">
-				<% @user.skills.all.each do |s| %>
+				<% @profile.skills.all.each do |s| %>
 					<div class="attribute-row"><%= s.name %></div>
 				<% end %>	
 			</div>
@@ -54,7 +48,7 @@
 				</div>
 			</div>
 			<div class="attribute-card">
-				<% @user.achievements.all.each do |a| %>
+				<% @profile.achievements.all.each do |a| %>
 					<div class="attribute-row"><%= a.description %></div>
 				<% end %>	
 			</div>
@@ -70,7 +64,7 @@
 				</div>
 			</div>
 			<div class="attribute-card">
-				<% @user.commitments.all.each do |c| %>
+				<% @profile.commitments.all.each do |c| %>
 					<div class="attribute-row"><%= c.description %></div>
 				<% end %>	
 			</div>
@@ -90,7 +84,7 @@
 				</div>
 			</div>
 			<div class="attribute-card">
-				<% @user.positions.first(3).each do |p| %>
+				<% @profile.positions.first(3).each do |p| %>
 					<div class="attribute-row"><%= p.title %><br/><span><%= p.name %></span></div>
 				<% end %>	
 			</div>
@@ -106,7 +100,7 @@
 				</div>
 			</div>
 			<div class="attribute-card">
-				<% @user.achievements.all.each do |a| %>
+				<% @profile.achievements.all.each do |a| %>
 					<div class="attribute-row">Baltimore City<br/><span>Maryland</span></div>
 				<% end %>	
 			</div>
@@ -122,7 +116,7 @@
 				</div>
 			</div>
 			<div class="attribute-card">
-				<% @user.educations.first(3).each do |e| %>
+				<% @profile.educations.first(3).each do |e| %>
 					<div class="attribute-row"><%= e.field_of_study %><br/><span><%= e.school_name %></span></div>
 				<% end %>	
 			</div>

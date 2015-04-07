@@ -1,6 +1,6 @@
 <%= form_for @user, url: wizard_path do |f| %>
 <br/>
-<div class="container signup-container">
+<div class="container profile-container profile-show">
 	<div class="user-type-container">
 		<div class="user-type-icon"><%= @user.symbol_user_type %></div>
 		<span class="user-type"><%= @user.string_user_type %></span>
@@ -16,15 +16,14 @@
 			<h4><%= @user.linkedin_industry %></h4>
 		</div>
 	</div>
+</div>
 
-	<div class="container">
-		<div class="attribute-container">
+		<div class="purpose-container">
 			<%= f.text_area :purpose,
 				placeholder: "In a few words, tell us what you hope to achieve by joining MERL. For example, \"Mentor companies working in the machine learning and artificial intelligence spaces.\"",
 				rows: "3"
 			%>
-		</div>
-	</div>
+			
 	<div class="container">
 		<div class="container attribute-container">
 			<div class="container">
