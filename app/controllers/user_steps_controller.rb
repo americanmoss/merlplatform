@@ -23,7 +23,7 @@ class UserStepsController < ApplicationController
   current_user.save
   flash[:success] = "Signup complete."
   current_user.user_status = 2
-  users_path
+  user_path current_user
  end
 
  private

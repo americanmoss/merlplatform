@@ -27,14 +27,12 @@
 div.signup-container, div.profile-container {
  @media #{$medium-up} {
   @include grid-column(
-   $columns: 10,
+   $columns: 12,
    $center: true
    );
-  max-width: 1200px;
-  @include card(2);
+  @include card(1);
  }
  background-color: $red;
- margin-top: rem-calc(40);
  margin-bottom: rem-calc(40);
 
  div.container {
@@ -44,21 +42,20 @@ div.signup-container, div.profile-container {
 
 div.user-type-container {
  height: 125px;
- margin:  rem-calc(50) rem-calc(50) 0 0;
+ padding:  rem-calc(30) rem-calc(50) 0 0;
  @extend .text-right;
  clear: both;
 }
 
 div.user-type-icon {
- width: 50px;
- height: 50px;
- border-radius: rem-calc(5);
+ width: 40px;
+ height: 40px;
  border: 1px solid $white;
  color: $white;
  font-weight: $font-weight-medium;
- font-size: rem-calc(30);
+ font-size: rem-calc(25);
  @extend .text-center;
- line-height: 50px;
+ line-height: 40px;
  margin: rem-calc(20) 0 rem-calc(20) auto;
 }
 
@@ -79,7 +76,7 @@ div.avatar-container {
  @include grid-column(
    $columns: 7
    );
- height: 100px;
+ height: 125px;
 }
 
 img.avatar {
@@ -91,7 +88,7 @@ img.avatar {
  height: 250px;
  width: 250px;
  overflow: hidden;
- margin: 0 rem-calc(50);
+ margin: 0 rem-calc(25);
  clear: none;
 }
 
@@ -99,18 +96,19 @@ div.name-container {
  @include grid-column(
    $columns: 5
   );
- padding: rem-calc(20) rem-calc(50) 0 0;
+ padding: rem-calc(25) rem-calc(50) 0 0;
  @extend .text-right;
 
  h1 { 
   font-weight: $font-weight-medium;
-  font-size: rem-calc(40);
+  font-size: rem-calc(30);
   margin: 0;
  }
 
  h4 {
   font-weight: $font-weight-light;
   color: $medium-grey;
+  font-size: rem-calc(22);
  }
 }
 
@@ -186,7 +184,7 @@ div.action-container {
 
 div.profile-container, div.profile-row-container {
   @include grid-column(
-   $columns: 11,
+   $columns: 12,
    $center: true
    );
   div.avatar-container {
@@ -196,20 +194,19 @@ div.profile-container, div.profile-row-container {
   }
 
   div.user-type-container {
-   height: 100px;
-   margin:  rem-calc(25) rem-calc(25) 0 0;
+   height: 125px;
   }
 
   div.user-type-icon {
-    margin: rem-calc(10) 0 rem-calc(10) auto;
+    margin: 0 0 rem-calc(10) auto;
   }
 
   img.avatar {
-   border: 15px solid $white;
-   height: 200px;
-   width: 200px;
+   border: 12px solid $white;
+   height: 175px;
+   width: 175px;
    overflow: hidden;
-   margin: 0 rem-calc(25);
+   margin: 0 rem-calc(50);
    clear: none;
   }
 
@@ -217,7 +214,7 @@ div.profile-container, div.profile-row-container {
    @include grid-column(
      $columns: 7
     );
-   padding: rem-calc(10) rem-calc(25) 0 0;
+   padding: rem-calc(20) rem-calc(50) 0 0;
    @extend .text-right;
   }
 }
@@ -227,51 +224,95 @@ div.profile-show {
 }
 
 div.profile-row-container {
-  max-width: 1200px; 
-  margin-bottom: rem-calc(20);
+  margin-bottom: rem-calc(80);
+  max-width: 95%;
+
+  div.attribute-header-container {
+    width: auto;
+  }
+
   div.attribute-card-container {
     @include grid-column(
       $columns: 4
     );
     &:nth-child(1) {
-      div.attribute-card {
-        margin-right: rem-calc(12.5);
+      div.attribute-card, div.attribute-header-container {
+        margin-right: rem-calc(25);
       }
     }
     &:nth-child(2) {
-      div.attribute-card {
-        margin: 0 rem-calc(7.5);
+      div.attribute-card, div.attribute-header-container {
+        margin: 0 rem-calc(15);
       }
     }
     &:nth-child(3) {
-      div.attribute-card {
-        margin-left: rem-calc(12.5);
+      div.attribute-card, div.attribute-header-container {
+        margin-left: rem-calc(25);
       }
     }
   }
-
-  div.attribute-card {
-    @extend .text-center;
-    @include card(2);
-    height: 100%;
-    background-color: $white;
-    padding: rem-calc(20) rem-calc(30);
-
-    i {
-      font-size: rem-calc(60);
-      line-height: rem-calc(50);
-      color: $light-grey;
-    }
-
-    h5 {
-      font-family: $font-family-menus;
-      text-transform: uppercase;
-      color: $light-grey;
-      padding-bottom: rem-calc(15);
-      border-bottom: 1px solid $lightest-grey;
-    }
-  }
-
 }
 
+  div.attribute-card {
+    height: 100%;
+
+    div.attribute-row {
+      @include grid-row;
+      @include card(1);
+      width: 100%;
+      background-color: $white;
+      margin-top: rem-calc(1);
+      padding: rem-calc(15) rem-calc(25);
+      color: $dark-grey;
+    }
+
+    span {
+      font-size: rem-calc(14);
+      color: $light-grey;
+    }
+}
+
+p.purpose {
+  color: $lightest-grey-overlay;
+  font-family: $font-family-menus;
+  font-size: rem-calc(22);
+  text-transform: uppercase;
+  @extend .text-center;
+  padding: rem-calc(40) rem-calc(20);
+}
+
+div.attribute-header-icon-container {
+  @include grid-column(
+   $columns: 6
+   );
+  @include card(1);
+  background-color: $white;
+  height: 100px;
+  @extend .text-center;
+
+  i {
+    line-height: 100px;
+    color: $light-grey;
+    font-size: rem-calc(60);
+  }
+}
+
+div.attribute-header-description-container {
+  @include grid-column(
+   $columns: 6
+   );
+  height: 100px;
+  @extend .text-center;
+  position: relative;
+
+  h5 {
+    font-family: $font-family-menus;
+    text-transform: uppercase;
+    color: $lightest-grey-overlay;
+    position: absolute;
+    top: 50%;
+    @include translate;
+    padding: 0 rem-calc(20);
+  }
+}
 

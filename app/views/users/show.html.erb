@@ -17,132 +17,115 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<!-- <div class="container">
 		<div class="attribute-container">
 			<%= @profile.purpose %>
 		</div>
+	</div> -->
+</div>
+
+<p class="purpose"><%= @profile.purpose %></p>
+
+<div class="container profile-row-container">
+	<div class="container" data-equalizer>
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="container attribute-header-container">
+				<div class="attribute-header-icon-container">
+					<i class="ion-settings"></i>
+				</div>
+				<div class="attribute-header-description-container">
+					<h5>Areas of Expertise</h5>
+				</div>
+			</div>
+			<div class="attribute-card">
+				<% @user.skills.all.each do |s| %>
+					<div class="attribute-row"><%= s.name %></div>
+				<% end %>	
+			</div>
+		</div>
+
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="container attribute-header-container">
+				<div class="attribute-header-icon-container">
+					<i class="ion-ribbon-b"></i>
+				</div>
+				<div class="attribute-header-description-container">
+					<h5>Professional Achievements</h5>
+				</div>
+			</div>
+			<div class="attribute-card">
+				<% @user.achievements.all.each do |a| %>
+					<div class="attribute-row"><%= a.description %></div>
+				<% end %>	
+			</div>
+		</div>
+
+		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="container attribute-header-container">
+				<div class="attribute-header-icon-container">
+					<i class="ion-connection-bars"></i>
+				</div>
+				<div class="attribute-header-description-container">
+					<h5>Level of Commitment</h5>
+				</div>
+			</div>
+			<div class="attribute-card">
+				<% @user.commitments.all.each do |c| %>
+					<div class="attribute-row"><%= c.description %></div>
+				<% end %>	
+			</div>
+		</div>
 	</div>
 </div>
 
 <div class="container profile-row-container">
 	<div class="container" data-equalizer>
 		<div class="attribute-card-container" data-equalizer-watch>
-			<div class="attribute-card">
-				<i class="ion-settings"></i>
-				<h5>Expertise</h5>
-
-				<% @user.skills.all.each_with_index do |s, i| %>
-					<span><%= s.name %></span><%= " · " unless i == @user.skills.size - 1 %>
-				<% end %>	
+			<div class="container attribute-header-container">
+				<div class="attribute-header-icon-container">
+					<i class="ion-briefcase"></i>
+				</div>
+				<div class="attribute-header-description-container">
+					<h5>Employment</h5>
+				</div>
 			</div>
-		</div>
-
-		<div class="attribute-card-container" data-equalizer-watch>
 			<div class="attribute-card">
-				<i class="ion-ribbon-b"></i>
-				<h5>Achievements</h5>
-
-				<% @user.achievements.all.each_with_index do |a, i| %>
-					<span><%= a.description %></span><%= " · " unless i == @user.achievements.size - 1 %>
-				<% end %>	
-			</div>
-		</div>
-
-		<div class="attribute-card-container" data-equalizer-watch>
-			<div class="attribute-card">
-				<i class="ion-connection-bars"></i>
-				<h5>Commitment</h5>
-
-				<% @user.commitments.all.each_with_index do |c, i| %>
-					<span><%= c.description %></span><%= " · " unless i == @user.commitments.size - 1 %>
-				<% end %>	
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="container profile-row-container">
-	<div class="container" data-equalizer>
-		<div class="attribute-card-container" data-equalizer-watch>
-			<div class="attribute-card">
-				<i class="ion-briefcase"></i>
-				<h5>Experience</h5>
-
 				<% @user.positions.first(3).each do |p| %>
-					<span><%= p.title %></span>, <span><%= p.name %></span><br/>
+					<div class="attribute-row"><%= p.title %><br/><span><%= p.name %></span></div>
 				<% end %>	
 			</div>
 		</div>
 
 		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="container attribute-header-container">
+				<div class="attribute-header-icon-container">
+					<i class="ion-ios-location"></i>
+				</div>
+				<div class="attribute-header-description-container">
+					<h5>Location</h5>
+				</div>
+			</div>
 			<div class="attribute-card">
-				<i class="ion-ios-location"></i>
-				<h5>Location</h5>
-
+				<% @user.achievements.all.each do |a| %>
+					<div class="attribute-row">Baltimore City<br/><span>Maryland</span></div>
+				<% end %>	
 			</div>
 		</div>
 
 		<div class="attribute-card-container" data-equalizer-watch>
+			<div class="container attribute-header-container">
+				<div class="attribute-header-icon-container">
+					<i class="ion-connection-bars"></i>
+				</div>
+				<div class="attribute-header-description-container">
+					<h5>Education</h5>
+				</div>
+			</div>
 			<div class="attribute-card">
-				<i class="ion-university"></i>
-				<h5>Education</h5>
-					<span><%= @user.educations.first.school_name %></span>
+				<% @user.educations.first(3).each do |e| %>
+					<div class="attribute-row"><%= e.field_of_study %><br/><span><%= e.school_name %></span></div>
+				<% end %>	
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-<!-- <div class="row">
-	<div class="small-12 large-centered columns">
-		<div class="large-2 columns text-center">
-			<%= image_tag(@profile.linkedin_image_url, class: 'profile-picture') %>
-		</div>
-		<div class="push-1 large-9 columns">
-			<h2><%= @profile.name %></h2>
-			<h4><%= @profile.headline %></h4>
-			<h4><%= @profile.industry %></h4>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="small-12 large-centered columns">
-		<div class="large-6 columns">
-			<div class="row">
-				<% @profile.positions.each do |p| %>
-				<div class="large-2 columns">
-					<img src="<%= p.company_square_logo_url %>">
-				</div>
-				<div class="large-10 columns">
-					<h5><%= p.name %></h5>
-					<h5><%= p.title %></h5>
-					<p><%= p.summary %></p>
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<div class="large-6 columns">
-			<div class="row">
-				<% @profile.educations.each do |e| %>
-				<div class="large-2 columns">
-					<img src="<%=  %>">
-				</div>
-				<div class="large-10 columns">
-					<h5><%= e.school_name %></h5>
-					<h5><%= e.degree %></h5>
-					<p><%= e.field_of_study %></p>
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<div class="large-6 columns">
-
-		</div>
-	</div>
-</div> -->

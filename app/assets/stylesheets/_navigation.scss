@@ -44,11 +44,12 @@ nav.white {
 // Offcanvas (side) bar
 
 aside.left-off-canvas-menu {
-  @include card(1);
+@include card(1);
  font-family: $font-family-menus;
  font-weight: $font-weight-bold;
  text-transform: uppercase;
  text-align: right;
+ background-color: $medium-grey;
  li {
   height: 75px;
   padding-top: rem-calc(4);
