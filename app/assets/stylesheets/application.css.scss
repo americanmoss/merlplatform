@@ -313,6 +313,20 @@ div.attribute-header-description-container {
     top: 50%;
     @include translate;
     padding: 0 rem-calc(20);
+    width: 100%;
+  }
+}
+
+div.footer {
+  @extend .text-center;
+  img {
+    width: 200px;
+  }
+  p {
+    text-transform: uppercase;
+    font-family: $font-family-menus;
+    color: $lightest-grey-overlay;
+    font-size: rem-calc(22);
   }
 }
 

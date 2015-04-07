@@ -48,20 +48,63 @@ aside.left-off-canvas-menu {
  font-family: $font-family-menus;
  font-weight: $font-weight-bold;
  text-transform: uppercase;
- text-align: right;
  background-color: $medium-grey;
  li {
-  height: 75px;
-  padding-top: rem-calc(4);
-  padding-right: rem-calc(17);
+  height: rem-calc(75);
+  margin-top: rem-calc(15);
+  transition: all 0.25s ease;
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0
+  }
   span {
-   padding-right: rem-calc(20); 
    font-size: rem-calc(18);
+   line-height: rem-calc(75);
   }
   i {
    text-align: center;
-   font-size: rem-calc(40);
-   vertical-align: middle;
+   display: inline-block;
+   min-width: rem-calc(70);
+   font-size: rem-calc(35);
+   margin: 0 rem-calc(20);
+   line-height: rem-calc(75);
+   height: rem-calc(75);
+   float: left;
   }
  }
+}
+
+aside.left-off-canvas-menu {
+
+  li.active, li:hover {
+    background-color: $dark-grey;
+
+    a, i, span {
+      color: $white;
+    }
+  }
+
+  li.profile {
+    background-color: $red;
+    padding: 0;
+    height: rem-calc(90);
+    margin-top: 0;
+
+    img {
+      height: 75px;
+      width: 75px;
+      border-radius: 50%;
+      float: left;
+      border: 5px solid $white; 
+      margin: rem-calc(7.5) rem-calc(20);
+    }
+
+    span {
+      line-height: rem-calc(90);
+      color: $white;
+      float: left;
+    }
+  }
 }
