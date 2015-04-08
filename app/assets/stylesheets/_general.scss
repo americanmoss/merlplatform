@@ -10,10 +10,10 @@ section.main-section.grey {
   transform: translateY(-50%);
 }
 
-@mixin translateX {
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+@mixin translateall {
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 @mixin card($depth) {
@@ -22,7 +22,7 @@ section.main-section.grey {
   } @else if $depth > 5 {
     @warn "Invalid $depth `#{$depth}` for mixin `card`.";
   } @else {
-    box-shadow: bottom-shadow($depth), top-shadow($depth);  
+    box-shadow: bottom-shadow($depth), top-shadow($depth) !important;  
   }
 }
 

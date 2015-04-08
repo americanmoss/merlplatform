@@ -1,5 +1,81 @@
-<ul class="users">
-	<% @users.each do |merl_member| %>
-		<li><%= merl_member.name %></li>
-	<% end %>
-</ul>
+<br/>
+<div class="users-container">
+  <% @users.each do |merl_member| %>
+  <div class="card-container">
+    <div class="card">
+      <%= link_to user_path(merl_member) do %>
+      <div class="user-type-container">
+        <div class="user-type-icon"><%= merl_member.symbol_user_type %></div>
+      </div>
+      <% end %>
+
+      <%= link_to user_path(merl_member) do %>
+      <div class="container headline-container">
+        <div class="avatar-container">
+         <%= image_tag(merl_member.linkedin_image_url, class: 'avatar') %>
+       </div>
+
+       <div class="name-container">
+          <h1><%= merl_member.name %></h1>
+          <h4><%= merl_member.linkedin_industry %></h4>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="attribute-row">
+       <div class="purpose-container">
+          <p class="purpose"><%= merl_member.purpose %></p>
+        </div>
+      </div>
+
+      <div class="attribute-row">
+        <div class="attribute-description-container">
+          <div class="attribute-description">
+           <i class="ion-settings"></i>
+           <h5>Expertise</h5>
+         </div>
+        </div>
+        <div class="attributes-container">
+          <div class="attributes">
+            <% merl_member.skills.all.each_with_index do |s, i| %>
+              <span><%= s.name %></span><%= " · " unless (i == merl_member.skills.all.size - 1) %> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="attribute-row">
+        <div class="attribute-description-container">
+          <div class="attribute-description">
+            <i class="ion-ribbon-b"></i>
+            <h5>Achievements</h5>
+          </div>
+        </div>
+        <div class="attributes-container">
+          <div class="attributes">
+            <% merl_member.achievements.all.each_with_index do |a, i| %>
+              <span><%= a.description %></span><%= " · " unless (i == merl_member.achievements.all.size - 1) %> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="attribute-row">
+        <div class="attribute-description-container">
+          <div class="attribute-description">
+            <i class="ion-connection-bars"></i>
+            <h5>Commitment</h5>
+          </div>
+        </div>
+        <div class="attributes-container">
+          <div class="attributes">
+            <% merl_member.commitments.all.each_with_index do |c, i| %>
+              <span><%= c.description %></span><%= " · " unless (i == merl_member.commitments.all.size - 1) %> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -23,310 +23,154 @@
 @import "navigation";
 @import "home";
 @import "forms";
+@import "profile_and_signup";
 
-div.signup-container, div.profile-container {
- @media #{$medium-up} {
-  @include grid-column(
-   $columns: 12,
-   $center: true
-   );
-  @include card(1);
- }
- background-color: $red;
- margin-bottom: rem-calc(40);
-
- div.container {
-  background-color: $white;
- }
+div.users-container {
+  max-width: 95% !important;
+  margin: auto;
+  @include grid-row;
 }
 
-div.user-type-container {
- height: 125px;
- padding:  rem-calc(30) rem-calc(50) 0 0;
- @extend .text-right;
- clear: both;
-}
-
-div.user-type-icon {
- width: 40px;
- height: 40px;
- border: 1px solid $white;
- color: $white;
- font-weight: $font-weight-medium;
- font-size: rem-calc(25);
- @extend .text-center;
- line-height: 40px;
- margin: rem-calc(20) 0 rem-calc(20) auto;
-}
-
-span.user-type {
- color: $white;
- font-size: rem-calc(18);
-}
-
-div.headline-container {
- background-color: $white;
- div {
-  background-color: $white;
- }
-}
-
-div.avatar-container {
- position: relative;
- @include grid-column(
-   $columns: 7
-   );
- height: 125px;
-}
-
-img.avatar {
- @include translate;
- z-index: 1;
- top: 0;
- border-radius: 50%;
- border: 15px solid $white;
- height: 250px;
- width: 250px;
- overflow: hidden;
- margin: 0 rem-calc(25);
- clear: none;
-}
-
-div.name-container {
- @include grid-column(
-   $columns: 5
-  );
- padding: rem-calc(25) rem-calc(50) 0 0;
- @extend .text-right;
-
- h1 { 
-  font-weight: $font-weight-medium;
-  font-size: rem-calc(30);
-  margin: 0;
- }
-
- h4 {
-  font-weight: $font-weight-light;
-  color: $medium-grey;
-  font-size: rem-calc(22);
- }
-}
-
-div.attribute-container {
- @include grid-column(
-   $columns: 11,
-   $center: true
-  );
- background-color: $white;
- padding: rem-calc(50) 0;
- border-top: 1px solid $lightest-grey;
- textarea {
-  padding: rem-calc(10);
-  margin: 0;
-  font-weight: $font-weight-light;
-  font-size: rem-calc(23);
- }
- p {
-  @extend .text-justify;
-  @include grid-column(
-  $columns: 7
- );
-  font-size: rem-calc(18);
- }
-}
-
-div.industry {
-  @include grid-column(
-  $columns: 4,
-  $offset: 1
- );
-}
-
-div.attribute-title-container {
- @include grid-column(
-  $columns: 3
- );
- @extend .text-center;
- color: $light-grey;
- i {
-  font-size: rem-calc(100);
-  line-height: rem-calc(100);
- }
- h5 {
-  font-family: $font-family-menus;
-  font-size: rem-calc(18);
-  line-height: rem-calc(30);
-  text-transform: uppercase;
-  color: $light-grey;
- }
-} 
-
-div.attributes {
- @include grid-column(
-  $columns: 9
- );
-}
-
-div.action-container {
-  background-color: $red;
-  height: 175px;
-  @extend .text-center;
-
-  input.button {
-    color: $white;
-    padding: 0;
-    line-height: 175px;
-    width: 100%;
-    font-size: rem-calc(40);
-    text-transform: uppercase;
-  }
-}
-
-div.profile-container, div.profile-row-container {
-  @include grid-column(
-   $columns: 12,
-   $center: true
-   );
-  div.avatar-container {
+div.card-container {
+  @media #{$large-up} {
     @include grid-column(
-      $columns: 5
-    );
-  }
-
-  div.user-type-container {
-   height: 125px;
-  }
-
-  div.user-type-icon {
-    margin: 0 0 rem-calc(10) auto;
-  }
-
-  img.avatar {
-   border: 12px solid $white;
-   height: 175px;
-   width: 175px;
-   overflow: hidden;
-   margin: 0 rem-calc(50);
-   clear: none;
-  }
-
-  div.name-container {
-   @include grid-column(
-     $columns: 7
-    );
-   padding: rem-calc(20) rem-calc(50) 0 0;
-   @extend .text-right;
-  }
-}
-
-div.profile-show {
-  margin-bottom: rem-calc(20);
-}
-
-div.profile-row-container {
-  margin-bottom: rem-calc(80);
-  max-width: 95%;
-
-  div.attribute-header-container {
-    width: auto;
-  }
-
-  div.attribute-card-container {
-    @include grid-column(
-      $columns: 4
-    );
+        $columns: 4
+      );
     &:nth-child(1) {
-      div.attribute-card, div.attribute-header-container {
+      div.card {
         margin-right: rem-calc(25);
       }
     }
     &:nth-child(2) {
-      div.attribute-card, div.attribute-header-container {
+      div.card {
         margin: 0 rem-calc(15);
       }
     }
     &:nth-child(3) {
-      div.attribute-card, div.attribute-header-container {
+      div.card {
         margin-left: rem-calc(25);
       }
     }
   }
 }
 
-  div.attribute-card {
-    height: 100%;
-
-    div.attribute-row {
-      @include grid-row;
-      @include card(1);
-      width: 100%;
-      background-color: $white;
-      margin-top: rem-calc(1);
-      padding: rem-calc(15) rem-calc(25);
-      color: $dark-grey;
-    }
-
-    span {
-      font-size: rem-calc(14);
-      color: $light-grey;
-    }
-}
-
-p.purpose {
-  color: $lightest-grey-overlay;
-  font-family: $font-family-menus;
-  font-size: rem-calc(22);
-  text-transform: uppercase;
-  @extend .text-center;
-  padding: rem-calc(40) rem-calc(20);
-}
-
-div.attribute-header-icon-container {
-  @include grid-column(
-   $columns: 6
-   );
-  @include card(1);
-  background-color: $white;
-  height: 100px;
-  @extend .text-center;
-
-  i {
-    line-height: 100px;
-    color: $light-grey;
-    font-size: rem-calc(60);
+div.users-container {
+  margin-top: rem-calc(20);
+  div.card {
+    @include card(1);
+    background-color: $white;
   }
 }
 
-div.attribute-header-description-container {
-  @include grid-column(
-   $columns: 6
-   );
-  height: 100px;
-  @extend .text-center;
-  position: relative;
+div.card {
+  div.user-type-container {
+    background-color: $red;
+    height: rem-calc(87.5);
+    padding: rem-calc(25) rem-calc(25) 0 0;
 
-  h5 {
-    font-family: $font-family-menus;
-    text-transform: uppercase;
-    color: $lightest-grey-overlay;
-    position: absolute;
-    top: 50%;
-    @include translate;
-    padding: 0 rem-calc(20);
+    div.user-type-icon {
+      margin-top: 0;
+    }
+  }
+
+  div.name-container {
+    @include grid-column(
+      $columns: 8
+    );
+    padding: rem-calc(10) rem-calc(25) rem-calc(10) 0;
+    h1 {
+      font-size: rem-calc(24); 
+    }
+
+    h4 {
+      font-size: rem-calc(16);
+    }
+  }
+
+  div.avatar-container {
+    height: rem-calc(62.5);
+    @include grid-column(
+      $columns: 4
+    );
+    img.avatar {
+      height: 125px;
+      width: 125px;
+      border-width: 9px;
+    }
+  }
+
+  div.attribute-row {
+    @include grid-row;
+    @include card(1);
     width: 100%;
+    background-color: $white;
+    margin-top: rem-calc(1);
+    padding: rem-calc(15) rem-calc(10);
+    color: $dark-grey;
+
+    div.purpose-container {
+      @extend .text-center;
+      position: relative;
+      min-height: 75px;
+
+      p.purpose {
+        @include translate;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        font-family: $font-family-sans-serif;
+        text-transform: none;
+        font-size: rem-calc(20);
+        color: $medium-grey;
+      }
+    }
+
+    div.attribute-description-container {
+      @include grid-column(
+        $columns: 4
+      );
+      @extend .text-center;
+      color: $light-grey;
+      position: relative;
+      min-height: 100px;
+
+      div.attribute-description {
+        @include translate;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+
+      i {
+        font-size: rem-calc(55);  
+        line-height: rem-calc(65);
+      }
+      h5 {
+        font-size: rem-calc(13);
+        font-family: $font-family-menus;
+        text-transform: uppercase;
+        color: $light-grey;
+        margin: 0;
+      }
+    }
+
+    div.attributes-container {
+      @include grid-column(
+        $columns: 8
+      );
+      min-height: 100px;
+      position: relative;
+
+      div.attributes {
+        @include translate;
+        font-size: rem-calc(15);
+        top: 50%;
+        width: 100%;
+        padding-left: rem-calc(15);
+        color: $medium-grey;
+      }
+    }
   }
 }
-
-div.footer {
-  @extend .text-center;
-  img {
-    width: 200px;
-  }
-  p {
-    text-transform: uppercase;
-    font-family: $font-family-menus;
-    color: $lightest-grey-overlay;
-    font-size: rem-calc(22);
-  }
-}
-
